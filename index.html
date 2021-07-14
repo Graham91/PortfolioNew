@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+
+<body>
+    <button id="playButton">Play</button>
+    <div class="page" style="margin-top:200px;">WEB</div>
+    <div class="page">APP</div>
+    <div id="seo" class="page">SEO</div>
+    <div class="mainBlock">
+        <div class="videoBlock">
+            <div class="videopage">Video</div>
+        </div>
+        <div class="videoBlock">
+            <div class="videopage">Video</div>
+        </div>
+        <div class="videoBlock">
+            <div class="videopage">Video</div>
+        </div>
+        <div class="videoBlock">
+            <div class="videopage">Video</div>
+        </div>
+        <div class="videoBlock">
+            <div class="videopage">Video</div>
+        </div>
+    </div>
+
+
+
+    <div id="set-height"></div>
+
+    <video id="v0" tabindex="0" , autobuffer preload>
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="background.mp4">
+        </source>
+    </video>
+    <script src="sticky.js"></script>
+    <script>
+
+        let height
+        $(document).ready(function () {
+            let fullSize = $(".mainBlock").height();
+            let heightChanger = $(window).height();
+            let moveTop = "-" + fullSize + "px";
+            height = fullSize;
+            console.log(moveTop);
+            $(".mainBlock").css("top", moveTop);
+            $(".videopage").css("top", 0);
+
+        });
+
+        $('#playButton').click(function (e) {
+            var vid = document.getElementById("v0");
+            vid.playbackRate = 1;
+            let heightChanger = $(window).height();
+            console.log(heightChanger);
+            let newHeight = height - heightChanger;
+            console.log(newHeight);
+            let newHeightString = "-" + newHeight + "px";
+            $('#v0').get(0).play();
+            $(".videopage").animate({
+                top: "25vh", left: "40%"
+            }, 3000);
+            $('.videopage').animateRotate(180, {
+                duration: 2400,
+                easing: 'linear',
+                complete: function () { },
+                step: function () { }
+            });
+            $(".mainBlock").animate({ top: newHeightString }, 3100);
+            height = newHeight
+        });
+
+        $.fn.animateRotate = function (angle, duration, easing, complete) {
+            var args = $.speed(duration, easing, complete);
+            var step = args.step;
+            return this.each(function (i, e) {
+                args.complete = $.proxy(args.complete, e);
+                args.step = function (now) {
+                    $.style(e, 'transform', 'rotateY(' + now + 'deg)');
+                    if (step) return step.apply(e, arguments);
+                };
+
+                $({ deg: 0 }).animate({ deg: angle }, args);
+            });
+        };
+        // enterView({
+        //     selector: 'section',
+        //     enter: function (el) {
+        //         el.classList.add('entered');
+        //     }
+        // })
+
+        // let frameNumber = 0, // start video at frame 0
+        //     // lower numbers = faster playback
+        //     playbackConst = 1000,
+        //     // get page height from video duration
+        //     setHeight = document.getElementById("set-height"),
+        //     // select video element         
+        //     vid = document.getElementById('v0');
+        // // var vid = $('#v0')[0]; // jquery option
+
+        // // dynamically set the page height according to video length
+        // vid.addEventListener('loadedmetadata', function () {
+        //     setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+        // });
+
+        // var navHeight = 1;
+
+        // $('nav a').click(function (e) {
+        //     e.preventDefault();
+        //     console.log("hello");
+        //     // var myHref = $(this).attr('href');
+        //     // var newPos = $(myHref).offset().top;
+        //     $('html, body').stop().animate({ scrollTop: 3000 }, 1300);
+        // });
+
+        // // Use requestAnimationFrame for smooth playback
+        // function scrollPlay() {
+        //     var frameNumber = window.pageYOffset / playbackConst;
+        //     vid.currentTime = frameNumber;
+        //     window.requestAnimationFrame(scrollPlay);
+        // }
+
+        // window.requestAnimationFrame(scrollPlay);
+
+    </script>
+</body>
+
+</html>
