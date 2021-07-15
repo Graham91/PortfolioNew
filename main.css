@@ -13,17 +13,25 @@ body {
 
 #v0 {
     position: fixed;
-    top: 0;
+    top: calc((100vw - 100vh)/-2);
     right: 0;
     width: 100%;
 }
 .videoBlock{
-  height: 100vh;
+  height: 100vw;
   width: 100vw;
   perspective: 700px;
   z-index: 100;
 }
 
+#animatorBox{
+  width: 300px;
+  height: 200px;
+  border: solid 5px purple;
+  background-color: bisque;
+  position: absolute;
+  z-index: 500;
+}
 #videopage1{
   background-color: black;
   width: 32.5%;
@@ -117,6 +125,7 @@ p { font-size: 1.5em; }
     left: 0;
     position: absolute;
     z-index: 300;
+    border: solid 5px green;
 }
 #playButton{
   top: 10%;

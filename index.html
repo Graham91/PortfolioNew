@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="main.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -15,6 +16,7 @@
     <div class="page" style="margin-top:200px;">WEB</div>
     <div class="page">APP</div>
     <div id="seo" class="page">SEO</div>
+    <div id=animatorBox>AnimatorBox</div>
     <div class="mainBlock">
         <div class="videoBlock">
             <div id="videopage5">Video</div>
@@ -38,13 +40,14 @@
     <div id="set-height"></div>
 
     <video id="v0" tabindex="0" , autobuffer preload>
-        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="background.mp4">
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="background2.mp4">
         </source>
     </video>
     <script src="sticky.js"></script>
     <script>
 
         let height
+        //will need to be on widnow resize as well
         $(document).ready(function () {
             let fullSize = $(".mainBlock").height();
             let heightChanger = $(window).height();
@@ -53,6 +56,7 @@
             console.log(moveTop);
             $(".mainBlock").css("top", moveTop);
             $(".videopage").css("top", 0);
+            $("#animatorBox").draggable()
 
         });
 
