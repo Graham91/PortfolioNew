@@ -22,11 +22,12 @@ body {
   width: 100vw;
   perspective: 700px;
   z-index: 100;
+  /* border: solid 2px black; */
 }
 
 #animatorBox{
-  width: 300px;
-  height: 200px;
+  width: 450px;
+  height: fit-content;
   border: solid 5px purple;
   background-color: bisque;
   position: absolute;
@@ -34,12 +35,19 @@ body {
 }
 #videopage1{
   background-color: black;
-  width: 32.5%;
-  height: 38%;
-  left: 13%;
-  top: 25%;
+  width: 32.8%;
+  height: 21.4%;
+  left: 0;
+  top: 0;
   position: relative;
 
+}
+#saveFile{
+  font-size: x-large;
+  font-weight: bold;
+  margin: auto;
+  height: 50px;
+  width: 80px;
 }
 #videopage2{
   background-color: black;
@@ -107,7 +115,73 @@ section {
     width: 100%;
     top: 33.3%;
 }
+.slidecontainer {
+  width: 95%; 
+  margin-left: 2.5%;
+}
+#frameSelector{
+  border: solid 3px purple;
+  margin: 5px;
+  padding: 3px;
+}
 
+.slider {
+  -webkit-appearance: none;  
+  appearance: none;
+  width: 100%;
+  height: 25px; 
+  background: #d3d3d3;
+  outline: none; 
+  opacity: 0.7; 
+  -webkit-transition: .2s; 
+  transition: opacity .2s;
+}
+
+
+.slider:hover {
+  opacity: 1; 
+}
+
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 25px; 
+  height: 25px; 
+  background: blue; 
+  cursor: pointer; 
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; 
+  height: 25px; 
+  background: blue; 
+  cursor: pointer; 
+}
+.inputNumber{
+  width: 60px;
+  height: 30px;
+  font-size: large;
+  margin: 5px;
+
+}
+#leftinput{
+  width: 60px;
+  height: 30px;
+  font-size: large;
+  margin: 5px;
+
+}
+#inputNumber2{
+  width: 80px;
+  height: 30px;
+  font-size: large;
+  margin: 5px;
+
+}
+#flexstyleHolder{
+  display: flex;
+}
 h1 {
     font-size: 3em;
     background: #fff;
@@ -125,7 +199,7 @@ p { font-size: 1.5em; }
     left: 0;
     position: absolute;
     z-index: 300;
-    border: solid 5px green;
+    /* border: solid 5px green; */
 }
 #playButton{
   top: 10%;

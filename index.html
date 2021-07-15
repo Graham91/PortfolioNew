@@ -12,11 +12,60 @@
 </head>
 
 <body>
-    <button id="playButton">Play</button>
+    <!-- <button id="playButton">Play</button> -->
     <div class="page" style="margin-top:200px;">WEB</div>
     <div class="page">APP</div>
     <div id="seo" class="page">SEO</div>
-    <div id=animatorBox>AnimatorBox</div>
+    <div id=animatorBox>
+        <div style="text-align: center; font-weight: bold;">AnimatorBox</div>
+        <div id=flexstyleHolder>
+            <div id="frameSelector">
+                <div style="text-align: center; font-weight: bold;">Box Left Location</div>
+                <div>
+                    <input type="number" id="leftinput" class="inputNumber"> %
+                </div>
+            </div>
+            <div id="frameSelector">
+                <div style="text-align: center; font-weight: bold;">Box Top Location</div>
+                <div>
+                    <input type="number" id="topInput" class="inputNumber"> %
+                </div>
+            </div>
+            <div id="frameSelector">
+                <div style="text-align: center; font-weight: bold;">Perspective Adjust</div>
+                <input type="number" id="inputNumber2">
+            </div>
+        </div>
+        <div id=flexstyleHolder>
+            <div id="frameSelector">
+                <div style="text-align: center; font-weight: bold;">Width Perecentage</div>
+                <div>
+                    <input type="number" id="widthInput" class="inputNumber"> %
+                </div>
+            </div>
+            <div id="frameSelector">
+                <div style="text-align: center; font-weight: bold;">Height Perecentage</div>
+                <div>
+                    <input type="number" id="heightInput" class="inputNumber"> %
+                </div>
+            </div>
+            <button id="saveFile">Save</button>
+        </div>
+        <div id="frameSelector">
+            <div style="text-align: center; font-weight: bold;">Y-AXIS Rotation 90 - 270 deg</div>
+            <div class="slidecontainer">
+                <input type="range" min="90" max="270" value="90" class="slider" id="myRange2">
+            </div>
+            <div id="demo2" style="text-align: center; font-weight: bold;">Angle: </div>
+        </div>
+        <div id="frameSelector">
+            <div style="text-align: center; font-weight: bold;">FRAME SELECTOR</div>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="81" value="1" class="slider" id="myRange">
+            </div>
+            <div id="demo" style="text-align: center; font-weight: bold;">Frame: </div>
+        </div>
+    </div>
     <div class="mainBlock">
         <div class="videoBlock">
             <div id="videopage5">Video</div>
@@ -47,17 +96,103 @@
     <script>
 
         let height
-        //will need to be on widnow resize as well
+        //will need to be on window resize as well
         $(document).ready(function () {
             let fullSize = $(".mainBlock").height();
             let heightChanger = $(window).height();
-            let moveTop = "-" + fullSize + "px";
-            height = fullSize;
+            let fullSizeMinusHeight = fullSize - heightChanger;
+            let moveTop = "-" + fullSizeMinusHeight + "px";
+            height = fullSizeMinusHeight;
             console.log(moveTop);
             $(".mainBlock").css("top", moveTop);
             $(".videopage").css("top", 0);
             $("#animatorBox").draggable()
 
+        });
+        function download(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+            filenumber++;
+        }
+        let filenumber = 0;
+        let filename = "framefile" + filenumber + ".txt";
+        // Start file download.
+        let fullDataSet = {
+            frameNumber: 0,
+            rotationY: 0,
+            boxLeftLocation: 0,
+            boxTopLocation: 0,
+            perspectiveAdjustment: 700,
+            WidthPercentage: 0,
+            HeightPercentage: 0,
+        }
+        function resetFulldataSet() {
+            fullDataSet.frameNumber = 0;
+            fullDataSet.rotationY = 0;
+            fullDataSet.boxLeftLocation = 0;
+            fullDataSet.boxTopLocation = 0;
+            fullDataSet.perspectiveAdjustment = 700;
+            fullDataSet.WidthPercentage = 0;
+            fullDataSet.HeightPercentage = 0;
+        }
+        $("#saveFile").click(function () {
+            console.log("saved button worked")
+            download(filename, JSON.stringify(fullDataSet));
+        })
+
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        var slider2 = document.getElementById("myRange2");
+        var output2 = document.getElementById("demo2");
+        output2.innerHTML = "Angle: " + slider2.value + " deg";
+        output.innerHTML = "Frame: " + slider.value; // Display the default slider value
+        let frame = 0;
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function () {
+
+            output.innerHTML = "Frame: " + this.value;
+            frame = this.value;
+            fullDataSet.frameNumber = this.value;
+        }
+        slider2.oninput = function () {
+            output2.innerHTML = "Angle: " + this.value + " deg";
+            $("#videopage1").css("transform", "rotateY(" + this.value + "deg)");
+            console.log("rotated to:" + this.value)
+            fullDataSet.rotationY = this.value;
+        }
+        $("#leftinput").change(function () {
+            console.log("hello" + this.value)
+            $("#videopage1").css("left", this.value + "%");
+            fullDataSet.boxLeftLocation = this.value;
+        });
+        $("#topInput").change(function () {
+            console.log("hello" + this.value)
+            $("#videopage1").css("top", this.value + "%");
+            fullDataSet.boxTopLocation = this.value;
+        });
+        $("#widthInput").change(function () {
+            console.log("hello" + this.value)
+            $("#videopage1").css("width", this.value + "%");
+            fullDataSet.WidthPercentage = this.value;
+        });
+        $("#heightInput").change(function () {
+            console.log("hello" + this.value)
+            $("#videopage1").css("height", this.value + "%");
+            fullDataSet.HeightPercentage = this.value;
+        });
+
+        $("#inputNumber2").change(function () {
+            console.log("hello" + this.value)
+            $(".videoBlock").css("perspective", this.value + "px");
+            fullDataSet.perspectiveAdjustment = this.value;
         });
 
         $('#playButton').click(function (e) {
@@ -104,16 +239,15 @@
         //     }
         // })
 
-        // let frameNumber = 0, // start video at frame 0
-        //     // lower numbers = faster playback
-        //     playbackConst = 1000,
-        //     // get page height from video duration
-        //     setHeight = document.getElementById("set-height"),
-        //     // select video element         
-        //     vid = document.getElementById('v0');
-        // // var vid = $('#v0')[0]; // jquery option
+        let frameNumber = 0, // start video at frame 0
+            // lower numbers = faster playback
+            playbackConst = 24,
+            // get page height from video duration
 
-        // // dynamically set the page height according to video length
+            // select video element         
+            vid = document.getElementById('v0');
+        // var vid = $('#v0')[0]; // jquery option
+        // dynamically set the page height according to video length
         // vid.addEventListener('loadedmetadata', function () {
         //     setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
         // });
@@ -129,13 +263,13 @@
         // });
 
         // // Use requestAnimationFrame for smooth playback
-        // function scrollPlay() {
-        //     var frameNumber = window.pageYOffset / playbackConst;
-        //     vid.currentTime = frameNumber;
-        //     window.requestAnimationFrame(scrollPlay);
-        // }
+        function scrollPlay() {
+            var frameNumber = frame / playbackConst;
+            vid.currentTime = frameNumber;
+            window.requestAnimationFrame(scrollPlay);
+        }
 
-        // window.requestAnimationFrame(scrollPlay);
+        window.requestAnimationFrame(scrollPlay);
 
     </script>
 </body>
