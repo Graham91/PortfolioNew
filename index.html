@@ -17,19 +17,19 @@
     <div id="seo" class="page">SEO</div>
     <div class="mainBlock">
         <div class="videoBlock">
-            <div class="videopage">Video</div>
+            <div id="videopage5">Video</div>
         </div>
         <div class="videoBlock">
-            <div class="videopage">Video</div>
+            <div id="videopage4">Video</div>
         </div>
         <div class="videoBlock">
-            <div class="videopage">Video</div>
+            <div id="videopage3">Video</div>
         </div>
         <div class="videoBlock">
-            <div class="videopage">Video</div>
+            <div id="videopage2">Video</div>
         </div>
         <div class="videoBlock">
-            <div class="videopage">Video</div>
+            <div id="videopage1">Video</div>
         </div>
     </div>
 
@@ -65,17 +65,19 @@
             console.log(newHeight);
             let newHeightString = "-" + newHeight + "px";
             $('#v0').get(0).play();
-            $(".videopage").animate({
-                top: "25vh", left: "40%"
-            }, 3000);
-            $('.videopage').animateRotate(180, {
-                duration: 2400,
-                easing: 'linear',
-                complete: function () { },
-                step: function () { }
-            });
-            $(".mainBlock").animate({ top: newHeightString }, 3100);
-            height = newHeight
+            $("#videopage1").addClass("LeftToRightSpin");
+            // $("#videopage1").addClass(");
+            setTimeout(function () {
+                $("#videopage1").animate({
+                    left: "40%"
+                }, 3000, "swing");
+            }, 400);
+            // (selector).animate({ styles }, speed, easing, callback)
+            setTimeout(function () {
+                $(".mainBlock").animate({ top: newHeightString }, 2900);
+                height = newHeight
+            }, 400);
+
         });
 
         $.fn.animateRotate = function (angle, duration, easing, complete) {
