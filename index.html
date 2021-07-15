@@ -75,6 +75,7 @@
                 <input type="range" orient="vertical" min="-180" Max="180" Value="0" id="largeRotation" />
                 <input type="range" orient="vertical" min="-50" Max="50" Value="0" id="smallRotation" />
             </div>
+            <button id="resetRotation">Reset</button>
         </div>
 
     </div>
@@ -206,6 +207,15 @@
             console.log("rotated to:" + this.value)
             fullDataSet.rotationY = this.value;
         }
+        $('#resetRotation').click(function () {
+            largeRotation.value = 0;
+            smallRotation.value = 0;
+            let newValue = parseInt(largeRotation.value) + parseFloat(smallRotation.value / 10);
+            outputRotation.innerHTML = newValue + " deg";
+            console.log(newValue);
+            fullDataSet.rotationX = newValue;
+            $("#videopage1").css("transform", "rotateX(" + fullDataSet.rotationX + "deg) rotateY(" + fullDataSet.rotationY + "deg)");
+        })
         $("#leftinput").change(function () {
             console.log("hello" + this.value)
             $("#videopage1").css("left", this.value + "%");
