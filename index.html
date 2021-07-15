@@ -65,6 +65,19 @@
             </div>
             <div id="demo" style="text-align: center; font-weight: bold;">Frame: </div>
         </div>
+        <div id="rotatorBox">
+
+            <div style="text-align: center; font-weight: bold;"> Rotation
+            </div>
+            <div style="text-align: center; font-weight: bold;" id=RotationDeg> 0 Deg
+            </div>
+            <div>
+                <input type="range" orient="vertical" min="-180" Max="180" Value="0" id="largeRotation" />
+                <input type="range" orient="vertical" min="-50" Max="50" Value="0" id="smallRotation" />
+            </div>
+        </div>
+
+    </div>
     </div>
     <div class="mainBlock">
         <div class="videoBlock">
@@ -121,6 +134,7 @@
 
             document.body.removeChild(element);
             filenumber++;
+            resetFulldataSet()
         }
         let filenumber = 0;
         let filename = "framefile" + filenumber + ".txt";
@@ -133,6 +147,7 @@
             perspectiveAdjustment: 700,
             WidthPercentage: 0,
             HeightPercentage: 0,
+            rotationX: 0,
         }
         function resetFulldataSet() {
             fullDataSet.frameNumber = 0;
@@ -142,20 +157,43 @@
             fullDataSet.perspectiveAdjustment = 700;
             fullDataSet.WidthPercentage = 0;
             fullDataSet.HeightPercentage = 0;
+            fullDataSet.rotationX
         }
         $("#saveFile").click(function () {
             console.log("saved button worked")
             download(filename, JSON.stringify(fullDataSet));
         })
 
+        var largeRotation = document.getElementById("largeRotation");
+        var outputRotation = document.getElementById("RotationDeg");
+        var smallRotation = document.getElementById("smallRotation");
         var slider = document.getElementById("myRange");
         var output = document.getElementById("demo");
         var slider2 = document.getElementById("myRange2");
         var output2 = document.getElementById("demo2");
+        // let smallRotationconverted = smallRotation.value / 10;
+        let fullDegressX = largeRotation.value + smallRotation.value / 10
+        outputRotation.innerHTML = fullDegressX + " deg"
         output2.innerHTML = "Angle: " + slider2.value + " deg";
         output.innerHTML = "Frame: " + slider.value; // Display the default slider value
         let frame = 0;
         // Update the current slider value (each time you drag the slider handle)
+        largeRotation.oninput = function () {
+            let newValue = parseInt(largeRotation.value) + smallRotation.value / 10;
+            console.log(largeRotation.value);
+            outputRotation.innerHTML = newValue + " deg";
+            fullDataSet.rotationX = newValue;
+            $("#videopage1").css("transform", "rotateX(" + newValue + "deg) rotateY(" + fullDataSet.rotationY + "deg)");
+
+        }
+        smallRotation.oninput = function () {
+            let newValue = parseInt(largeRotation.value) + parseFloat(smallRotation.value / 10);
+            outputRotation.innerHTML = newValue + " deg";
+            console.log(newValue);
+            fullDataSet.rotationX = newValue;
+            $("#videopage1").css("transform", "rotateX(" + newValue + "deg) rotateY(" + fullDataSet.rotationY + "deg)");
+
+        }
         slider.oninput = function () {
 
             output.innerHTML = "Frame: " + this.value;
@@ -164,7 +202,7 @@
         }
         slider2.oninput = function () {
             output2.innerHTML = "Angle: " + this.value + " deg";
-            $("#videopage1").css("transform", "rotateY(" + this.value + "deg)");
+            $("#videopage1").css("transform", "rotateX(" + fullDataSet.rotationX + "deg) rotateY(" + this.value + "deg)");
             console.log("rotated to:" + this.value)
             fullDataSet.rotationY = this.value;
         }
