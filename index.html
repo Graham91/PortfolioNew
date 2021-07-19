@@ -245,18 +245,19 @@
             console.log(newHeight);
             let newHeightString = "-" + newHeight + "px";
             $('#v0').get(0).play();
-            // $("#videopage1").addClass("LeftToRightSpin");
-            // $("#videopage1").addClass(");
+            $("#videopage1").addClass("downFrombottom");
+            $("#videopage2").addClass("downFromTop");
             setTimeout(function () {
-                $("#videopage1").animate({
-                    left: "40%"
-                }, 3000, "swing");
-            }, 400);
+                $("#videopage1").removeClass("downFromTop");
+                $("#videopage1").removeClass("downFrombottom");
+                $("#videopage2").removeClass("downFromTop");
+                $("#videopage2").removeClass("downFrombottom")
+            }, 3240);
             // (selector).animate({ styles }, speed, easing, callback)
-            setTimeout(function () {
-                $(".mainBlock").animate({ top: newHeightString }, 2900);
-                height = newHeight
-            }, 400);
+            // setTimeout(function () {
+            //     $(".mainBlock").animate({ top: newHeightString }, 2900);
+            //     height = newHeight
+            // }, 400);
 
         });
 
