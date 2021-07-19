@@ -12,10 +12,10 @@
 </head>
 
 <body>
-    <!-- <button id="playButton">Play</button> -->
-    <div class="page" style="margin-top:200px;">WEB</div>
+    <button id="playButton">Play</button>
+    <!-- <div class="page" style="margin-top:200px;">WEB</div>
     <div class="page">APP</div>
-    <div id="seo" class="page">SEO</div>
+    <div id="seo" class="page">SEO</div> -->
     <div id=animatorBox>
         <div style="text-align: center; font-weight: bold;">AnimatorBox</div>
         <div id=flexstyleHolder>
@@ -79,22 +79,12 @@
         </div>
 
     </div>
-    </div>
+    <!-- </div> -->
     <div class="mainBlock">
-        <div class="videoBlock">
-            <div id="videopage5">Video</div>
-        </div>
-        <div class="videoBlock">
-            <div id="videopage4">Video</div>
-        </div>
-        <div class="videoBlock">
-            <div id="videopage3">Video</div>
-        </div>
-        <div class="videoBlock">
-            <div id="videopage2">Video</div>
-        </div>
+
         <div class="videoBlock">
             <div id="videopage1">Video</div>
+            <div id="videopage2">Video</div>
         </div>
     </div>
 
@@ -146,8 +136,8 @@
             boxLeftLocation: 0,
             boxTopLocation: 0,
             perspectiveAdjustment: 700,
-            WidthPercentage: 0,
-            HeightPercentage: 0,
+            WidthPercentage: 32.8,
+            HeightPercentage: 22,
             rotationX: 0,
         }
         function resetFulldataSet() {
@@ -156,13 +146,15 @@
             fullDataSet.boxLeftLocation = 0;
             fullDataSet.boxTopLocation = 0;
             fullDataSet.perspectiveAdjustment = 700;
-            fullDataSet.WidthPercentage = 0;
-            fullDataSet.HeightPercentage = 0;
-            fullDataSet.rotationX
+            fullDataSet.WidthPercentage = 32.8;
+            fullDataSet.HeightPercentage = 22;
+            fullDataSet.rotationX = 0;
         }
         $("#saveFile").click(function () {
-            console.log("saved button worked")
-            download(filename, JSON.stringify(fullDataSet));
+            console.log("saved button worked");
+            let percentageNumber = (fullDataSet.frameNumber * 100) / 81
+            let cssString = percentageNumber + '%{ left:' + fullDataSet.boxLeftLocation + '%; top: ' + fullDataSet.boxTopLocation + '%; transform: rotateY(' + fullDataSet.rotationY + 'deg); width: ' + fullDataSet.WidthPercentage + '%; height: ' + fullDataSet.HeightPercentage + '%;}'
+            download(filename, cssString);
         })
 
         var largeRotation = document.getElementById("largeRotation");
@@ -184,7 +176,7 @@
             console.log(largeRotation.value);
             outputRotation.innerHTML = newValue + " deg";
             fullDataSet.rotationX = newValue;
-            $("#videopage1").css("transform", "rotateX(" + newValue + "deg) rotateY(" + fullDataSet.rotationY + "deg)");
+            $("#videopage2").css("transform", "rotateX(" + newValue + "deg) rotateY(" + fullDataSet.rotationY + "deg)");
 
         }
         smallRotation.oninput = function () {
@@ -192,7 +184,7 @@
             outputRotation.innerHTML = newValue + " deg";
             console.log(newValue);
             fullDataSet.rotationX = newValue;
-            $("#videopage1").css("transform", "rotateX(" + newValue + "deg) rotateY(" + fullDataSet.rotationY + "deg)");
+            $("#videopage2").css("transform", "rotateX(" + newValue + "deg) rotateY(" + fullDataSet.rotationY + "deg)");
 
         }
         slider.oninput = function () {
@@ -203,7 +195,7 @@
         }
         slider2.oninput = function () {
             output2.innerHTML = "Angle: " + this.value + " deg";
-            $("#videopage1").css("transform", "rotateX(" + fullDataSet.rotationX + "deg) rotateY(" + this.value + "deg)");
+            $("#videopage2").css("transform", "rotateX(" + fullDataSet.rotationX + "deg) rotateY(" + this.value + "deg)");
             console.log("rotated to:" + this.value)
             fullDataSet.rotationY = this.value;
         }
@@ -218,22 +210,22 @@
         })
         $("#leftinput").change(function () {
             console.log("hello" + this.value)
-            $("#videopage1").css("left", this.value + "%");
+            $("#videopage2").css("left", this.value + "%");
             fullDataSet.boxLeftLocation = this.value;
         });
         $("#topInput").change(function () {
             console.log("hello" + this.value)
-            $("#videopage1").css("top", this.value + "%");
+            $("#videopage2").css("top", this.value + "%");
             fullDataSet.boxTopLocation = this.value;
         });
         $("#widthInput").change(function () {
             console.log("hello" + this.value)
-            $("#videopage1").css("width", this.value + "%");
+            $("#videopage2").css("width", this.value + "%");
             fullDataSet.WidthPercentage = this.value;
         });
         $("#heightInput").change(function () {
             console.log("hello" + this.value)
-            $("#videopage1").css("height", this.value + "%");
+            $("#videopage2").css("height", this.value + "%");
             fullDataSet.HeightPercentage = this.value;
         });
 
@@ -244,6 +236,7 @@
         });
 
         $('#playButton').click(function (e) {
+            console.log("play");
             var vid = document.getElementById("v0");
             vid.playbackRate = 1;
             let heightChanger = $(window).height();
@@ -252,7 +245,7 @@
             console.log(newHeight);
             let newHeightString = "-" + newHeight + "px";
             $('#v0').get(0).play();
-            $("#videopage1").addClass("LeftToRightSpin");
+            // $("#videopage1").addClass("LeftToRightSpin");
             // $("#videopage1").addClass(");
             setTimeout(function () {
                 $("#videopage1").animate({
