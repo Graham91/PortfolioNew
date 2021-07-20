@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="main.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 <body>
     <button id="playButton">Play</button>
+    <button id="playButton2">ChangeButtonTest</button>
 
     <div class="mainBlock">
 
@@ -31,13 +33,31 @@
     <div id="set-height"></div>
 
     <video id="v0" tabindex="0" , autobuffer preload>
-        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="background2.mp4">
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="./newbackrgoundtransparent.webm">
         </source>
     </video>
-    <script src="sticky.js"></script>
-    <script>
 
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+    <script src="sticky.js"></script>
+
+    <script>
         let height
+        const firebaseConfig =
+            firebase.initializeApp({
+                apiKey: "AIzaSyC1v6FNfEXZET-w4JKcHrUoI93fDefK4Vw",
+                authDomain: "animationarray-dacc8.firebaseapp.com",
+                databaseURL: "https://animationarray-dacc8-default-rtdb.firebaseio.com/",
+                projectId: "animationarray-dacc8",
+
+            });
+
+        // var db = firebase.firestore();
+        var db = firebase.database().ref();
+        array1 = firebase.database().ref("frame");
+
+        //main databaseobjects
+
         //will need to be on window resize as well
         $(".static").css("display", "none");
         $('#playButton').click(function (e) {
@@ -62,8 +82,8 @@
             }, 3240);
             // (selector).animate({ styles }, speed, easing, callback)
             // setTimeout(function () {
-            //     $(".mainBlock").animate({ top: newHeightString }, 2900);
-            //     height = newHeight
+            // $(".mainBlock").animate({ top: newHeightString }, 2900);
+            // height = newHeight
             // }, 400);
 
         });
@@ -82,43 +102,78 @@
             });
         };
         // enterView({
-        //     selector: 'section',
-        //     enter: function (el) {
-        //         el.classList.add('entered');
-        //     }
+        // selector: 'section',
+        // enter: function (el) {
+        // el.classList.add('entered');
+        // }
         // })
+
+
+        $("#playButton2").click(function (e) {
+            console.log("love IT!");
+            // $("#videopage1").css({ "left": testArray[1].left, "top": testArray[1].top, "transform": testArray[1].transform,
+            // "width": testArray[1].width, "height": testArray[1].height
+
+
+        });
+        //send infromation to firebase
+        function sendInfo(informationObject, frameNumber, movingObject) {
+            objectName = movingObject + "/"
+            firebase
+                .database()
+                .ref(objectName + frameNumber)
+                .set(informationObject);
+        }
+
+        let frameArray = [];
+        // let testobj = { 1: { left: "61.3%", top: "62.8%", transform: "rotateY(204deg)", width: "28.4%", height: "20.8%" }
+
+        class FrameObject {
+            constructor(left, top, transform, width, height) {
+                this.left = left;
+                this.top = top;
+                this.transform = transform;
+                this.height = height;
+                this.width = width;
+            }
+        }
+
+        function buildArray(frame, left, top, transform, width, height) {
+            let object = new FrameObject(left, top, transform, width, height);
+            frameArray[frame] = object
+        }
 
         let frameNumber = 0, // start video at frame 0
             // lower numbers = faster playback
             playbackConst = 24,
             // get page height from video duration
 
-            // select video element         
+            // select video element
             vid = document.getElementById('v0');
-        // var vid = $('#v0')[0]; // jquery option
-        // dynamically set the page height according to video length
-        // vid.addEventListener('loadedmetadata', function () {
-        //     setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
-        // });
+    // var vid = $('#v0')[0]; // jquery option
+    // dynamically set the page height according to video length
+    // vid.addEventListener('loadedmetadata', function () {
+    // setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+    // });
 
-        // var navHeight = 1;
+    // var navHeight = 1;
 
-        // $('nav a').click(function (e) {
-        //     e.preventDefault();
-        //     console.log("hello");
-        //     // var myHref = $(this).attr('href');
-        //     // var newPos = $(myHref).offset().top;
-        //     $('html, body').stop().animate({ scrollTop: 3000 }, 1300);
-        // });
+    // $('nav a').click(function (e) {
+    // e.preventDefault();
+    // console.log("hello");
+    // // var myHref = $(this).attr('href');
+    // // var newPos = $(myHref).offset().top;
+    // $('html, body').stop().animate({ scrollTop: 3000 }, 1300);
+    // });
 
-        // // Use requestAnimationFrame for smooth playback
-        function scrollPlay() {
-            var frameNumber = frame / playbackConst;
-            vid.currentTime = frameNumber;
-            window.requestAnimationFrame(scrollPlay);
-        }
+    // // Use requestAnimationFrame for smooth playback
+    // function scrollPlay() {
+    // var frameNumber = frame / playbackConst;
+    // vid.currentTime = frameNumber;
+    // window.requestAnimationFrame(scrollPlay);
+    // }
 
-        window.requestAnimationFrame(scrollPlay);
+    // window.requestAnimationFrame(scrollPlay);
 
     </script>
 </body>

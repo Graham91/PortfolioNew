@@ -27,7 +27,10 @@ body {
   top: calc((100vw - 100vh)/-2);
 }
 
-
+#playButton2{
+  position: relative;
+  z-index: 500;
+}
 #animatorBox{
   width: 450px;
   height: fit-content;
