@@ -59,6 +59,13 @@
             <div id="demo2" style="text-align: center; font-weight: bold;">Angle: </div>
         </div>
         <div id="frameSelector">
+            <div style="text-align: center; font-weight: bold;">X-AXIS Rotation 90 - 270 deg</div>
+            <div class="slidecontainer">
+                <input type="range" min="90" max="270" value="90" class="slider" id="myRange15">
+            </div>
+            <div id="demo45" style="text-align: center; font-weight: bold;">Angle: </div>
+        </div>
+        <div id="frameSelector">
             <div style="text-align: center; font-weight: bold;">FRAME SELECTOR</div>
             <div class="slidecontainer">
                 <input type="range" min="1" max="81" value="1" class="slider" id="myRange">
@@ -138,6 +145,7 @@
             perspectiveAdjustment: 700,
             WidthPercentage: 32.8,
             HeightPercentage: 22,
+            rotationZ: 0,
             rotationX: 0,
         }
         function resetFulldataSet() {
@@ -148,6 +156,7 @@
             fullDataSet.perspectiveAdjustment = 700;
             fullDataSet.WidthPercentage = 32.8;
             fullDataSet.HeightPercentage = 22;
+            fullDataSet.rotationZ = 0;
             fullDataSet.rotationX = 0;
         }
         $("#saveFile").click(function () {
@@ -164,6 +173,8 @@
         var output = document.getElementById("demo");
         var slider2 = document.getElementById("myRange2");
         var output2 = document.getElementById("demo2");
+        var slider3 = document.getElementById("myRange15");
+        var output3 = document.getElementById("demo45");
         // let smallRotationconverted = smallRotation.value / 10;
         let fullDegressX = largeRotation.value + smallRotation.value / 10
         outputRotation.innerHTML = fullDegressX + " deg"
@@ -176,7 +187,7 @@
             console.log(largeRotation.value);
             outputRotation.innerHTML = newValue + " deg";
             fullDataSet.rotationX = newValue;
-            $("#videopage2").css("transform", "rotateX(" + newValue + "deg) rotateY(" + fullDataSet.rotationY + "deg)");
+            $("#videopage2").css("transform", "rotateZ(" + newValue + "deg) rotateY(" + fullDataSet.rotationY + "deg)" + "rotateY(" + fullDataSet.rotationX + "deg)");
 
         }
         smallRotation.oninput = function () {
@@ -184,7 +195,7 @@
             outputRotation.innerHTML = newValue + " deg";
             console.log(newValue);
             fullDataSet.rotationX = newValue;
-            $("#videopage2").css("transform", "rotateX(" + newValue + "deg) rotateY(" + fullDataSet.rotationY + "deg)");
+            $("#videopage2").css("transform", "rotateZ(" + newValue + "deg) rotateY(" + fullDataSet.rotationY + "deg)" + "rotateY(" + fullDataSet.rotationX + "deg)");
 
         }
         slider.oninput = function () {
@@ -195,9 +206,16 @@
         }
         slider2.oninput = function () {
             output2.innerHTML = "Angle: " + this.value + " deg";
-            $("#videopage2").css("transform", "rotateX(" + fullDataSet.rotationX + "deg) rotateY(" + this.value + "deg)");
+            $("#videopage2").css("transform", "rotateZ(" + fullDataSet.rotationZ + "deg) rotateY(" + this.value + "deg)" + "rotateX(" + fullDataSet.rotationX + "deg)");
             console.log("rotated to:" + this.value)
             fullDataSet.rotationY = this.value;
+        }
+
+        slider3.oninput = function () {
+            output3.innerHTML = "Angle: " + this.value + " deg";
+            $("#videopage2").css("transform", "rotateZ(" + fullDataSet.rotationZ + "deg) rotateX(" + this.value + "deg)rotateY(" + fullDataSet.rotationY + "deg)");
+            console.log("rotated to:" + this.value)
+            fullDataSet.rotationX = this.value;
         }
         $('#resetRotation').click(function () {
             largeRotation.value = 0;
@@ -205,8 +223,8 @@
             let newValue = parseInt(largeRotation.value) + parseFloat(smallRotation.value / 10);
             outputRotation.innerHTML = newValue + " deg";
             console.log(newValue);
-            fullDataSet.rotationX = newValue;
-            $("#videopage1").css("transform", "rotateX(" + fullDataSet.rotationX + "deg) rotateY(" + fullDataSet.rotationY + "deg)");
+            fullDataSet.rotationZ = newValue;
+            $("#videopage1").css("transform", "rotateZ(" + fullDataSet.rotationZ + "deg) rotateY(" + fullDataSet.rotationY + "deg) " + "rotateY(" + fullDataSet.rotationX + "deg)");
         })
         $("#leftinput").change(function () {
             console.log("hello" + this.value)

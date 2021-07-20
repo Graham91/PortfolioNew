@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <button id="playButton">Play</button>
+
+    <div class="mainBlock">
+
+        <div class="videoBlock">
+            <div id="videopage1">
+                <div class="static"></div>
+            </div>
+            <div id="videopage2">
+                <div class="static"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="set-height"></div>
+
+    <video id="v0" tabindex="0" , autobuffer preload>
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="background2.mp4">
+        </source>
+    </video>
+    <script src="sticky.js"></script>
+    <script>
+
+        let height
+        //will need to be on window resize as well
+        $(".static").css("display", "none");
+        $('#playButton').click(function (e) {
+            console.log("play");
+            $(".static").css("display", "block")
+            var vid = document.getElementById("v0");
+            vid.playbackRate = 1;
+            let heightChanger = $(window).height();
+            console.log(heightChanger);
+            let newHeight = height - heightChanger;
+            console.log(newHeight);
+            let newHeightString = "-" + newHeight + "px";
+            $('#v0').get(0).play();
+            $("#videopage1").addClass("downFrombottom");
+            $("#videopage2").addClass("downFromTop");
+            setTimeout(function () {
+                $("#videopage1").removeClass("downFromTop");
+                $("#videopage1").removeClass("downFrombottom");
+                $("#videopage2").removeClass("downFromTop");
+                $("#videopage2").removeClass("downFrombottom");
+                $(".static").css("display", "none");
+            }, 3240);
+            // (selector).animate({ styles }, speed, easing, callback)
+            // setTimeout(function () {
+            //     $(".mainBlock").animate({ top: newHeightString }, 2900);
+            //     height = newHeight
+            // }, 400);
+
+        });
+
+        $.fn.animateRotate = function (angle, duration, easing, complete) {
+            var args = $.speed(duration, easing, complete);
+            var step = args.step;
+            return this.each(function (i, e) {
+                args.complete = $.proxy(args.complete, e);
+                args.step = function (now) {
+                    $.style(e, 'transform', 'rotateY(' + now + 'deg)');
+                    if (step) return step.apply(e, arguments);
+                };
+
+                $({ deg: 0 }).animate({ deg: angle }, args);
+            });
+        };
+        // enterView({
+        //     selector: 'section',
+        //     enter: function (el) {
+        //         el.classList.add('entered');
+        //     }
+        // })
+
+        let frameNumber = 0, // start video at frame 0
+            // lower numbers = faster playback
+            playbackConst = 24,
+            // get page height from video duration
+
+            // select video element         
+            vid = document.getElementById('v0');
+        // var vid = $('#v0')[0]; // jquery option
+        // dynamically set the page height according to video length
+        // vid.addEventListener('loadedmetadata', function () {
+        //     setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+        // });
+
+        // var navHeight = 1;
+
+        // $('nav a').click(function (e) {
+        //     e.preventDefault();
+        //     console.log("hello");
+        //     // var myHref = $(this).attr('href');
+        //     // var newPos = $(myHref).offset().top;
+        //     $('html, body').stop().animate({ scrollTop: 3000 }, 1300);
+        // });
+
+        // // Use requestAnimationFrame for smooth playback
+        function scrollPlay() {
+            var frameNumber = frame / playbackConst;
+            vid.currentTime = frameNumber;
+            window.requestAnimationFrame(scrollPlay);
+        }
+
+        window.requestAnimationFrame(scrollPlay);
+
+    </script>
+</body>
+
+</html>
