@@ -103,9 +103,23 @@
         <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="./newbackrgoundtransparent.webm">
         </source>
     </video>
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
     <script src="sticky.js"></script>
     <script>
+        const firebaseConfig =
+            firebase.initializeApp({
+                apiKey: "AIzaSyC1v6FNfEXZET-w4JKcHrUoI93fDefK4Vw",
+                authDomain: "animationarray-dacc8.firebaseapp.com",
+                databaseURL: "https://animationarray-dacc8-default-rtdb.firebaseio.com/",
+                projectId: "animationarray-dacc8",
 
+            });
+
+        // var db = firebase.firestore();
+        var db = firebase.database().ref();
+        array1 = firebase.database().ref("frame");
         let height
         //will need to be on window resize as well
         $(document).ready(function () {
@@ -138,7 +152,8 @@
         let filename = "framefile" + filenumber + ".txt";
         // Start file download.
         let fullDataSet = {
-            frameNumber: 0,
+            objectLocation: "centerToBottom",
+            frameNumber: 1,
             rotationY: 0,
             boxLeftLocation: 0,
             boxTopLocation: 0,
@@ -146,25 +161,48 @@
             WidthPercentage: 32.8,
             HeightPercentage: 22,
             rotationZ: 0,
-            rotationX: 0,
+            rotationX: 180,
         }
-        function resetFulldataSet() {
-            fullDataSet.frameNumber = 0;
-            fullDataSet.rotationY = 0;
-            fullDataSet.boxLeftLocation = 0;
-            fullDataSet.boxTopLocation = 0;
-            fullDataSet.perspectiveAdjustment = 700;
-            fullDataSet.WidthPercentage = 32.8;
-            fullDataSet.HeightPercentage = 22;
-            fullDataSet.rotationZ = 0;
-            fullDataSet.rotationX = 0;
+        // function resetFulldataSet() {
+        //     fullDataSet.frameNumber = 0;
+        //     fullDataSet.rotationY = 0;
+        //     fullDataSet.boxLeftLocation = 0;
+        //     fullDataSet.boxTopLocation = 0;
+        //     fullDataSet.perspectiveAdjustment = 700;
+        //     fullDataSet.WidthPercentage = 32.8;
+        //     fullDataSet.HeightPercentage = 22;
+        //     fullDataSet.rotationZ = 0;
+        //     fullDataSet.rotationX = 0;
+        // }
+        function sendInfo(informationObject, frameNumber, movingObject) {
+
+            objectName = movingObject + "/"
+            firebase
+                .database()
+                .ref(objectName + frameNumber)
+                .set(informationObject);
         }
+
+
+        class FrameObject {
+            constructor(left, top, transform, width, height) {
+                this.left = left;
+                this.top = top;
+                this.transform = transform;
+                this.height = height;
+                this.width = width;
+            }
+        }
+
         $("#saveFile").click(function () {
+            let informationObject = new FrameObject(fullDataSet.boxLeftLocation, fullDataSet.boxTopLocation, fullDataSet.rotationY, fullDataSet.WidthPercentage, fullDataSet.HeightPercentage)
+            sendInfo(informationObject, fullDataSet.frameNumber, fullDataSet.objectLocation);
             console.log("saved button worked");
-            let percentageNumber = (fullDataSet.frameNumber * 100) / 81
-            let cssString = percentageNumber + '%{ left:' + fullDataSet.boxLeftLocation + '%; top: ' + fullDataSet.boxTopLocation + '%; transform: rotateY(' + fullDataSet.rotationY + 'deg); width: ' + fullDataSet.WidthPercentage + '%; height: ' + fullDataSet.HeightPercentage + '%;}'
-            download(filename, cssString);
+            // let percentageNumber = (fullDataSet.frameNumber * 100) / 81
+            // let cssString = percentageNumber + '%{ left:' + fullDataSet.boxLeftLocation + '%; top: ' + fullDataSet.boxTopLocation + '%; transform: rotateY(' + fullDataSet.rotationY + 'deg); width: ' + fullDataSet.WidthPercentage + '%; height: ' + fullDataSet.HeightPercentage + '%;}'
+            // download(filename, cssString);
         })
+
 
         var largeRotation = document.getElementById("largeRotation");
         var outputRotation = document.getElementById("RotationDeg");
