@@ -17,6 +17,12 @@ body {
     right: 0;
     width: 100%;
 }
+#words{
+  overflow-y: auto;
+  background-color: aliceblue;
+  z-index: 700;
+  position: absolute;
+}
 .videoBlock{
   height: 100vw;
   width: 100vw;
@@ -39,6 +45,10 @@ body {
   position: absolute;
   z-index: 500;
 }
+#getInfo{
+  position: absolute;
+  z-index: 500;
+}
 #videopage1{
   background-image: url(./RPSLS2.png);
   background-size: 100% ;
@@ -48,7 +58,7 @@ body {
   left: 45%;
   position: absolute;
 
-  display: none;
+  /* display: none; */
 
 }
 .static{
@@ -333,7 +343,7 @@ p { font-size: 1.5em; }
       transform: rotateY(180deg) ;
     }
   }
-  @-webkit-keyframes identifier {
+  @-webkit-keyframes identifie12r {
     0% { top: 37%; left: 45%; transform: rotateY(180deg); }
     2.46%{ left:45.2%; top: 37.8%; transform: rotateY(181deg); width: 32.8%; height: 21.2%;}
     4.93% {left: 45.3%;  top: 38.1%;  transform: rotateY(182deg); height: 21.2% }
@@ -356,7 +366,7 @@ p { font-size: 1.5em; }
     74.07%{ left:67.6%; top: 96%; transform: rotateY(250deg); width: 32.8%; height: 22%;}
     100% { left:67.6%; top: 110%; transform: rotateY(250deg); width: 32.8%; height: 22%;}
   }
-  @keyframes identifier {
+  @keyframes identifie12r {
     0% { top: 37%; left: 45%; transform: rotateY(180deg); }
     2.46%{ left:45.2%; top: 37.8%; transform: rotateY(181deg); width: 32.8%; height: 21.2%;}
     4.93% {left: 45.3%;  top: 38.1%;  transform: rotateY(182deg); height: 21.2% }
@@ -425,3 +435,316 @@ p { font-size: 1.5em; }
     96.29%{ left:44.6%; top: 36.7%; transform: rotateY(180deg); width: 32.8%; height: 22%;}
     100%{ left:44.6%; top: 36.7%; transform: rotateY(180deg); width: 32.8%; height: 22%;}
   }
+  @-webkit-keyframes identifier{
+
+  0% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+2.46% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+3.7037037037037037% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+4.938271604938271% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+6.172839506172839% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+7.407407407407407% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+8.641975308641975% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+9.876543209876543% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+
+11.11111111111111% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+
+12.345679012345679% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+
+13.580246913580247% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+
+14.814814814814815% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+
+16.049382716049383% { left:24.4%; top: -19%; transform: rotateY(99deg); width: 22.4%; height: 19%; }
+
+17.28395061728395% { left:24.4%; top: -17%; transform: rotateY(101deg); width: 22.4%; height: 19%; }
+
+18.51851851851852% { left:24.4%; top: -16%; transform: rotateY(103deg); width: 22.3%; height: 19%; }
+
+19.753086419753085% { left:24.4%; top: -16%; transform: rotateY(103deg); width: 22.3%; height: 19%; }
+
+20.987654320987655% { left:24.6%; top: -15%; transform: rotateY(106deg); width: 22.3%; height: 19%; }
+
+22.22222222222222% { left:24.4%; top: -13.5%; transform: rotateY(106deg); width: 22.3%; height: 19%; }
+
+23.45679012345679% { left:24.4%; top: -13.5%; transform: rotateY(106deg); width: 22.3%; height: 19%; }
+
+24.691358024691358% { left:24.8%; top: -13%; transform: rotateY(110deg); width: 22.3%; height: 19%; }
+
+25.925925925925927% { left:24.6%; top: -12.1%; transform: rotateY(111deg); width: 22.7%; height: 19%; }
+
+27.160493827160494% { left:24.6%; top: -12.1%; transform: rotateY(111deg); width: 22.7%; height: 19%; }
+
+28.395061728395063% { left:25%; top: -11%; transform: rotateY(115deg); width: 22.7%; height: 19%; }
+
+29.62962962962963% { left:25%; top: -10%; transform: rotateY(118deg); width: 22.8%; height: 19%; }
+
+30.864197530864196% { left:25%; top: -10%; transform: rotateY(118deg); width: 22.8%; height: 19%; }
+
+32.098765432098766% { left:25.4%; top: -9%; transform: rotateY(121deg); width: 22.8%; height: 19.8%; }
+
+33.333333333333336% { left:25.4%; top: -8%; transform: rotateY(123deg); width: 23%; height: 19.8%; }
+
+34.5679012345679% { left:25.4%; top: -8%; transform: rotateY(123deg); width: 23%; height: 19.8%; }
+
+35.80246913580247% { left:24.8%; top: -6%; transform: rotateY(125deg); width: 25%; height: 19.8%; }
+
+37.03703703703704% { left:24.3%; top: -5.4%; transform: rotateY(126deg); width: 26.2%; height: 19.8%; }
+
+38.27160493827161% { left:24.3%; top: -5.4%; transform: rotateY(126deg); width: 26.2%; height: 19.8%; }
+
+39.50617283950617% { left:24.7%; top: -3.5%; transform: rotateY(130deg); width: 26.2%; height: 20%; }
+
+40.74074074074074% { left:24.7%; top: -2.8%; transform: rotateY(130deg); width: 27.2%; height: 20%; }
+
+41.97530864197531% { left:24.7%; top: -2.8%; transform: rotateY(130deg); width: 27.2%; height: 20%; }
+
+43.20987654320987% { left:25.4%; top: -.5%; transform: rotateY(133deg); width: 27.7%; height: 19.8%; }
+
+44.44444444444444% { left:25.7%; top: .6%; transform: rotateY(136deg); width: 27.7%; height: 19.9%; }
+
+45.67901234567901% { left:25.7%; top: .6%; transform: rotateY(136deg); width: 27.7%; height: 19.9%; }
+
+46.91358024691358% { left:26%; top: 2.2%; transform: rotateY(138deg); width: 28.6%; height: 20.4%; }
+
+48.148148148148145% { left:26.2%; top: 3.3%; transform: rotateY(139deg); width: 29.3%; height: 20.4%; }
+
+49.382716049382715% { left:26.2%; top: 3.3%; transform: rotateY(139deg); width: 29.3%; height: 20.4%; }
+
+50.617283950617285% { left:26.9%; top: 5.6%; transform: rotateY(143deg); width: 30.1%; height: 20.4%; }
+
+51.851851851851855% { left:27.7%; top: 6.7%; transform: rotateY(145deg); width: 29.9%; height: 20.4%; }
+
+53.08641975308642% { left:27.7%; top: 6.7%; transform: rotateY(145deg); width: 29.9%; height: 20.4%; }
+
+54.32098765432099% { left:28.6%; top: 9%; transform: rotateY(148deg); width: 30.4%; height: 20.4%; }
+
+55.55555555555556% { left:29.1%; top: 10.1%; transform: rotateY(150deg); width: 30.6%; height: 20.5%; }
+
+56.79012345679013% { left:29.1%; top: 10.1%; transform: rotateY(150deg); width: 30.6%; height: 20.5%; }
+
+58.02469135802469% { left:30.3%; top: 12.4%; transform: rotateY(153deg); width: 30.8%; height: 20.5%; }
+
+59.25925925925926% { left:31%; top: 13.4%; transform: rotateY(154deg); width: 30.8%; height: 20.7%; }
+
+60.49382716049383% { left:31%; top: 13.4%; transform: rotateY(154deg); width: 30.8%; height: 20.7%; }
+
+61.72839506172839% { left:31.8%; top: 15.6%; transform: rotateY(157deg); width: 31.6%; height: 20.7%; }
+
+62.96296296296296% { left:32.5%; top: 16.7%; transform: rotateY(158deg); width: 31.6%; height: 20.8%; }
+
+64.19753086419753% { left:32.5%; top: 16.7%; transform: rotateY(158deg); width: 31.6%; height: 20.8%; }
+
+65.4320987654321% { left:33.6%; top: 18.8%; transform: rotateY(160deg); width: 32.1%; height: 21%; }
+
+66.66666666666667% { left:34.2%; top: 19.9%; transform: rotateY(160deg); width: 32.1%; height: 21%; }
+
+67.90123456790124% { left:34.2%; top: 19.9%; transform: rotateY(160deg); width: 32.1%; height: 21%; }
+
+69.1358024691358% { left:35.5%; top: 22%; transform: rotateY(164deg); width: 32.1%; height: 21%; }
+
+70.37037037037037% { left:36.2%; top: 22.9%; transform: rotateY(166deg); width: 32.3%; height: 21.3%; }
+
+71.60493827160494% { left:36.2%; top: 22.9%; transform: rotateY(166deg); width: 32.3%; height: 21.3%; }
+
+72.8395061728395% { left:37.4%; top: 25.1%; transform: rotateY(167deg); width: 32.3%; height: 21.1%; }
+
+74.07407407407408% { left:38%; top: 26.1%; transform: rotateY(167deg); width: 32.3%; height: 21%; }
+
+75.30864197530865% { left:38%; top: 26.1%; transform: rotateY(167deg); width: 32.3%; height: 21%; }
+
+76.54320987654322% { left:39.3%; top: 27.9%; transform: rotateY(171deg); width: 32.3%; height: 21%; }
+
+77.77777777777777% { left:39.9%; top: 28.7%; transform: rotateY(172deg); width: 32.4%; height: 21%; }
+
+79.01234567901234% { left:39.9%; top: 28.7%; transform: rotateY(172deg); width: 32.4%; height: 21%; }
+
+80.24691358024691% { left:40.8%; top: 30.3%; transform: rotateY(174deg); width: 32.5%; height: 21%; }
+
+81.48148148148148% { left:41.3%; top: 31.2%; transform: rotateY(174deg); width: 32.4%; height: 21%; }
+
+82.71604938271605% { left:41.3%; top: 31.2%; transform: rotateY(174deg); width: 32.4%; height: 21%; }
+
+83.95061728395062% { left:42.1%; top: 32.6%; transform: rotateY(176deg); width: 32.6%; height: 21.0%; }
+
+85.18518518518519% { left:42.4%; top: 33.2%; transform: rotateY(176deg); width: 32.7%; height: 21.1%; }
+
+86.41975308641975% { left:42.4%; top: 33.2%; transform: rotateY(176deg); width: 32.7%; height: 21.1%; }
+
+87.65432098765432% { left:43.2%; top: 34.2%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+88.88888888888889% { left:43.5%; top: 34.8%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+90.12345679012346% { left:43.5%; top: 34.8%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+91.35802469135803% { left:44%; top: 35.6%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+92.5925925925926% { left:44.2%; top: 35.9%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+93.82716049382717% { left:44.2%; top: 35.9%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+95.06172839506173% { left:44.5%; top: 36.5%; transform: rotateY(180deg); width: 32.7%; height: 21.2%; }
+
+96.29629629629629% { left:44.5%; top: 36.6%; transform: rotateY(180deg); width: 32.8%; height: 21.3%; }
+
+97.53086419753086% { left:44.5%; top: 36.6%; transform: rotateY(180deg); width: 32.8%; height: 21.3%; }
+
+98.76543209876543% { left:44.6%; top: 36.6%; transform: rotateY(180deg); width: 32.8%; height: 21.3%; }
+
+}
+
+@keyframes identifier {
+  0% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+2.46% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+3.7037037037037037% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+4.938271604938271% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+6.172839506172839% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+7.407407407407407% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+8.641975308641975% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+9.876543209876543% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+
+11.11111111111111% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+
+12.345679012345679% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+
+13.580246913580247% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+
+14.814814814814815% { left:24.4%; top: -22%; transform: rotateY(100deg); width: 22.4%; height: 19%; }
+
+16.049382716049383% { left:24.4%; top: -19%; transform: rotateY(99deg); width: 22.4%; height: 19%; }
+
+17.28395061728395% { left:24.4%; top: -17%; transform: rotateY(101deg); width: 22.4%; height: 19%; }
+
+18.51851851851852% { left:24.4%; top: -16%; transform: rotateY(103deg); width: 22.3%; height: 19%; }
+
+19.753086419753085% { left:24.4%; top: -16%; transform: rotateY(103deg); width: 22.3%; height: 19%; }
+
+20.987654320987655% { left:24.6%; top: -15%; transform: rotateY(106deg); width: 22.3%; height: 19%; }
+
+22.22222222222222% { left:24.4%; top: -13.5%; transform: rotateY(106deg); width: 22.3%; height: 19%; }
+
+23.45679012345679% { left:24.4%; top: -13.5%; transform: rotateY(106deg); width: 22.3%; height: 19%; }
+
+24.691358024691358% { left:24.8%; top: -13%; transform: rotateY(110deg); width: 22.3%; height: 19%; }
+
+25.925925925925927% { left:24.6%; top: -12.1%; transform: rotateY(111deg); width: 22.7%; height: 19%; }
+
+27.160493827160494% { left:24.6%; top: -12.1%; transform: rotateY(111deg); width: 22.7%; height: 19%; }
+
+28.395061728395063% { left:25%; top: -11%; transform: rotateY(115deg); width: 22.7%; height: 19%; }
+
+29.62962962962963% { left:25%; top: -10%; transform: rotateY(118deg); width: 22.8%; height: 19%; }
+
+30.864197530864196% { left:25%; top: -10%; transform: rotateY(118deg); width: 22.8%; height: 19%; }
+
+32.098765432098766% { left:25.4%; top: -9%; transform: rotateY(121deg); width: 22.8%; height: 19.8%; }
+
+33.333333333333336% { left:25.4%; top: -8%; transform: rotateY(123deg); width: 23%; height: 19.8%; }
+
+34.5679012345679% { left:25.4%; top: -8%; transform: rotateY(123deg); width: 23%; height: 19.8%; }
+
+35.80246913580247% { left:24.8%; top: -6%; transform: rotateY(125deg); width: 25%; height: 19.8%; }
+
+37.03703703703704% { left:24.3%; top: -5.4%; transform: rotateY(126deg); width: 26.2%; height: 19.8%; }
+
+38.27160493827161% { left:24.3%; top: -5.4%; transform: rotateY(126deg); width: 26.2%; height: 19.8%; }
+
+39.50617283950617% { left:24.7%; top: -3.5%; transform: rotateY(130deg); width: 26.2%; height: 20%; }
+
+40.74074074074074% { left:24.7%; top: -2.8%; transform: rotateY(130deg); width: 27.2%; height: 20%; }
+
+41.97530864197531% { left:24.7%; top: -2.8%; transform: rotateY(130deg); width: 27.2%; height: 20%; }
+
+43.20987654320987% { left:25.4%; top: -.5%; transform: rotateY(133deg); width: 27.7%; height: 19.8%; }
+
+44.44444444444444% { left:25.7%; top: .6%; transform: rotateY(136deg); width: 27.7%; height: 19.9%; }
+
+45.67901234567901% { left:25.7%; top: .6%; transform: rotateY(136deg); width: 27.7%; height: 19.9%; }
+
+46.91358024691358% { left:26%; top: 2.2%; transform: rotateY(138deg); width: 28.6%; height: 20.4%; }
+
+48.148148148148145% { left:26.2%; top: 3.3%; transform: rotateY(139deg); width: 29.3%; height: 20.4%; }
+
+49.382716049382715% { left:26.2%; top: 3.3%; transform: rotateY(139deg); width: 29.3%; height: 20.4%; }
+
+50.617283950617285% { left:26.9%; top: 5.6%; transform: rotateY(143deg); width: 30.1%; height: 20.4%; }
+
+51.851851851851855% { left:27.7%; top: 6.7%; transform: rotateY(145deg); width: 29.9%; height: 20.4%; }
+
+53.08641975308642% { left:27.7%; top: 6.7%; transform: rotateY(145deg); width: 29.9%; height: 20.4%; }
+
+54.32098765432099% { left:28.6%; top: 9%; transform: rotateY(148deg); width: 30.4%; height: 20.4%; }
+
+55.55555555555556% { left:29.1%; top: 10.1%; transform: rotateY(150deg); width: 30.6%; height: 20.5%; }
+
+56.79012345679013% { left:29.1%; top: 10.1%; transform: rotateY(150deg); width: 30.6%; height: 20.5%; }
+
+58.02469135802469% { left:30.3%; top: 12.4%; transform: rotateY(153deg); width: 30.8%; height: 20.5%; }
+
+59.25925925925926% { left:31%; top: 13.4%; transform: rotateY(154deg); width: 30.8%; height: 20.7%; }
+
+60.49382716049383% { left:31%; top: 13.4%; transform: rotateY(154deg); width: 30.8%; height: 20.7%; }
+
+61.72839506172839% { left:31.8%; top: 15.6%; transform: rotateY(157deg); width: 31.6%; height: 20.7%; }
+
+62.96296296296296% { left:32.5%; top: 16.7%; transform: rotateY(158deg); width: 31.6%; height: 20.8%; }
+
+64.19753086419753% { left:32.5%; top: 16.7%; transform: rotateY(158deg); width: 31.6%; height: 20.8%; }
+
+65.4320987654321% { left:33.6%; top: 18.8%; transform: rotateY(160deg); width: 32.1%; height: 21%; }
+
+66.66666666666667% { left:34.2%; top: 19.9%; transform: rotateY(160deg); width: 32.1%; height: 21%; }
+
+67.90123456790124% { left:34.2%; top: 19.9%; transform: rotateY(160deg); width: 32.1%; height: 21%; }
+
+69.1358024691358% { left:35.5%; top: 22%; transform: rotateY(164deg); width: 32.1%; height: 21%; }
+
+70.37037037037037% { left:36.2%; top: 22.9%; transform: rotateY(166deg); width: 32.3%; height: 21.3%; }
+
+71.60493827160494% { left:36.2%; top: 22.9%; transform: rotateY(166deg); width: 32.3%; height: 21.3%; }
+
+72.8395061728395% { left:37.4%; top: 25.1%; transform: rotateY(167deg); width: 32.3%; height: 21.1%; }
+
+74.07407407407408% { left:38%; top: 26.1%; transform: rotateY(167deg); width: 32.3%; height: 21%; }
+
+75.30864197530865% { left:38%; top: 26.1%; transform: rotateY(167deg); width: 32.3%; height: 21%; }
+
+76.54320987654322% { left:39.3%; top: 27.9%; transform: rotateY(171deg); width: 32.3%; height: 21%; }
+
+77.77777777777777% { left:39.9%; top: 28.7%; transform: rotateY(172deg); width: 32.4%; height: 21%; }
+
+79.01234567901234% { left:39.9%; top: 28.7%; transform: rotateY(172deg); width: 32.4%; height: 21%; }
+
+80.24691358024691% { left:40.8%; top: 30.3%; transform: rotateY(174deg); width: 32.5%; height: 21%; }
+
+81.48148148148148% { left:41.3%; top: 31.2%; transform: rotateY(174deg); width: 32.4%; height: 21%; }
+
+82.71604938271605% { left:41.3%; top: 31.2%; transform: rotateY(174deg); width: 32.4%; height: 21%; }
+
+83.95061728395062% { left:42.1%; top: 32.6%; transform: rotateY(176deg); width: 32.6%; height: 21.0%; }
+
+85.18518518518519% { left:42.4%; top: 33.2%; transform: rotateY(176deg); width: 32.7%; height: 21.1%; }
+
+86.41975308641975% { left:42.4%; top: 33.2%; transform: rotateY(176deg); width: 32.7%; height: 21.1%; }
+
+87.65432098765432% { left:43.2%; top: 34.2%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+88.88888888888889% { left:43.5%; top: 34.8%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+90.12345679012346% { left:43.5%; top: 34.8%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+91.35802469135803% { left:44%; top: 35.6%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+92.5925925925926% { left:44.2%; top: 35.9%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+93.82716049382717% { left:44.2%; top: 35.9%; transform: rotateY(179deg); width: 32.7%; height: 21.2%; }
+
+95.06172839506173% { left:44.5%; top: 36.5%; transform: rotateY(180deg); width: 32.7%; height: 21.2%; }
+
+96.29629629629629% { left:44.5%; top: 36.6%; transform: rotateY(180deg); width: 32.8%; height: 21.3%; }
+
+97.53086419753086% { left:44.5%; top: 36.6%; transform: rotateY(180deg); width: 32.8%; height: 21.3%; }
+
+98.76% { left:44.6%; top: 36.6%; transform: rotateY(180deg); width: 32.8%; height: 21.3%; }
+
+
+}
