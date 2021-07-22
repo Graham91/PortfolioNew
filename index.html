@@ -588,7 +588,36 @@
         //         el.classList.add('entered');
         //     }
         // })
+        function createNewObject(animationObject) {
+            let newObject = {}
+            for (let index = 1; index < 81; index++) {
+                secondObjectIndex = index + 1;
+                thirdObjectIndex = index + 1;
+                object1 = animationObject[index];
+                object2 = animationObject[secondObjectIndex];
+                object3 = {}
+                let keyArray = Object.keys(object1);
+                keyArray.forEach(element => {
+                    object3[element] = compareTwoDetermineMiddle(object1[element], object2[element])
+                });
+                newObject[index] = object1;
+                newObject[secondObjectIndex] = object3;
+                newObject[thirdObjectIndex] = object2;
+            }
+            console.log(newObject);
+        }
 
+        function compareTwoDetermineMiddle(firstNumber, secondNumber) {
+            let newAnswer;
+            if (firstNumber === secondNumber) {
+                newAnswer = firstNumber
+            }
+            else {
+                newAnswer = (firstNumber + secondNumber) / 2
+            }
+            return newAnswer
+
+        }
         let frameNumber = 0, // start video at frame 0
             // lower numbers = faster playback
             playbackConst = 1,
