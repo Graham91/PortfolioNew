@@ -87,6 +87,7 @@
             <button id="resetRotation">Reset</button>
         </div>
 
+
     </div>
     <!-- </div> -->
     <div class="mainBlock">
@@ -102,7 +103,12 @@
     <div id="set-height"></div>
 
     <video id="v0" tabindex="0" , autobuffer preload>
-        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="./newbackrgoundtransparent.webm">
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="./background3.webm">
+        </source>
+    </video>
+
+    <video id="v1" tabindex="0" , autobuffer preload>
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="./forwards0001-0081.webm">
         </source>
     </video>
 
@@ -110,89 +116,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
     <script src="sticky.js"></script>
     <script>
-        const centerToBottom = {
-            1: { height: "21.2", left: "45", top: "37.5", transform: "180", width: "32.8" },
-            2: { height: "21.2", left: "45.2", top: "37.8", transform: "180", width: "32.8" },
-            3: { height: "21.2", left: "45.4", top: "38", transform: "180", width: "32.8" },
-            4: { height: "21.3", left: "45.4", top: "38", transform: "181", width: "32.8" },
-            5: { height: "21.3", left: "46", top: "38.6", transform: "181", width: "32.6" },
-            6: { height: "21.35", left: "46.1", top: "38.9", transform: "181", width: "32.5" },
-            7: { height: "21.35", left: "46.2", top: "38.9", transform: "181", width: "32.5" },
-            8: { height: "21.3", left: "46.7", top: "39.9", transform: "182", width: "32.5" },
-            9: { height: "21.2", left: "47", top: "40.5", transform: "182", width: "32.6" },
-            10: { height: "21.2", left: "47", top: "40.5", transform: "184", width: "32.6" },
-            11: { height: "21.3", left: "47.9", top: "41.6", transform: "184", width: "32.5" },
-            12: { height: "21.2", left: "48.2", top: "42.4", transform: "184", width: "32.6" },
-            13: { height: "21.2", left: "48.2", top: "42.4", transform: "184", width: "32.6" },
-            14: { height: "21.3", left: "49.2", top: "43.8", transform: "186", width: "32.5" },
-            15: { height: "21.1", left: "49.6", top: "44.8", transform: "188", width: "32.6" },
-            16: { height: "21.1", left: "49.6", top: "44.8", transform: "188", width: "32.6" },
-            17: { height: "21.1", left: "51", top: "46.5", transform: "187", width: "32" },
-            18: { height: "21.1", left: "51.7", top: "47.4", transform: "188", width: "31.7" },
-            19: { height: "21.1", left: "51.7", top: "47.4", transform: "188", width: "31.7" },
-            20: { height: "21.0", left: "52.9", top: "49.4", transform: "189", width: "31.5" },
-            21: { height: "21.0", left: "53.8", top: "50.5", transform: "190", width: "31" },
-            22: { height: "21.0", left: "53.8", top: "50.5", transform: "190", width: "31" },
-            23: { height: "21.0", left: "54.8", top: "52.7", transform: "193", width: "31.6" },
-            24: { height: "21.2", left: "55.6", top: "53.6", transform: "194", width: "31.2" },
-            25: { height: "21.2", left: "55.6", top: "53.6", transform: "194", width: "31.2" },
-            26: { height: "21.2", left: "57.2", top: "55.8", transform: "195", width: "30.2" },
-            27: { height: "21.1", left: "57.9", top: "57", transform: "197", width: "30.1" },
-            28: { height: "21.1", left: "57.9", top: "57", transform: "197", width: "30.1" },
-            29: { height: "21.1", left: "59.5", top: "59.2", transform: "199", width: "29.6" },
-            30: { height: "21.0", left: "60.3", top: "60.5", transform: "200", width: "28.9" },
-            31: { height: "21.0", left: "60.3", top: "60.5", transform: "200", width: "28.9" },
-            32: { height: "21.0", left: "61.6", top: "62.9", transform: "203", width: "28.4" },
-            33: { height: "21", left: "62.2", top: "64", transform: "205", width: "28.6" },
-            34: { height: "21", left: "62.2", top: "64", transform: "205", width: "28.6" },
-            35: { height: "21.2", left: "63.6", top: "66.3", transform: "209", width: "28.3" },
-            36: { height: "21", left: "64.6", top: "67.6", transform: "209", width: "27" },
-            37: { height: "21", left: "64.6", top: "67.6", transform: "209", width: "27" },
-            38: { height: "20.8", left: "66.3", top: "70", transform: "210", width: "25.4" },
-            39: { height: "20.8", left: "67", top: "71.2", transform: "213", width: "25.3" },
-            40: { height: "20.8", left: "67", top: "71.2", transform: "213", width: "25.3" },
-            41: { height: "20.5", left: "67.9", top: "73.5", transform: "217", width: "25.1" },
-            42: { height: "20.5", left: "68.5", top: "74.8", transform: "218", width: "24.3" },
-            43: { height: "20.5", left: "68.5", top: "74.8", transform: "218", width: "24.3" },
-            44: { height: "20.4", left: "69.3", top: "77.1", transform: "221", width: "24" },
-            45: { height: "20.6", left: "70.2", top: "78.1", transform: "223", width: "23" },
-            46: { height: "20.6", left: "70.2", top: "78.1", transform: "223", width: "23" },
-            47: { height: "20.5", left: "71.2", top: "80.1", transform: "226", width: "22" },
-            48: { height: "20.3", left: "71.3", top: "81.2", transform: "228", width: "22" },
-            49: { height: "20.3", left: "71.3", top: "81.2", transform: "228", width: "22" },
-            50: { height: "20.2", left: "72.2", top: "83", transform: "232", width: "21" },
-            51: { height: "20.2", left: "72.3", top: "84", transform: "235", width: "20.9" },
-            52: { height: "20.2", left: "72.3", top: "84", transform: "235", width: "20.9" },
-            53: { height: "20.2", left: "72.5", top: "85.8", transform: "239", width: "20.8" },
-            54: { height: "20.2", left: "72.6", top: "86.8", transform: "241", width: "20.7" },
-            55: { height: "20.2", left: "72.6", top: "86.8", transform: "241", width: "20.7" },
-            56: { height: "20.2", left: "72.7", top: "88", transform: "246", width: "20.7" },
-            57: { height: "20.2", left: "72.7", top: "89", transform: "248", width: "20.7" },
-            58: { height: "20.2", left: "72.7", top: "89", transform: "248", width: "20.7" },
-            59: { height: "20.2", left: "73", top: "91", transform: "250", width: "20.7" },
-            60: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            61: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            62: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            63: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            64: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            65: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            66: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            67: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            68: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            69: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            70: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            71: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            72: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            73: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            74: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            75: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            76: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            77: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            78: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            79: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            80: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-            81: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
-        }
         const topToBottom = {
             1: { height: "19", left: "24.4", top: "-22", transform: "100", width: "22.4" },
             2: { height: "19", left: "24.4", top: "-22", transform: "100", width: "22.4" },
@@ -277,6 +200,2351 @@
             81: { height: "21.3", left: "44.6", top: "36.6", transform: "180", width: "32.8" },
         }
 
+        let centerToBottom = {
+            1: { height: "21.2", left: "45", top: "37.5", transform: "180", width: "32.8" },
+            2: { height: "21.2", left: "45.2", top: "37.8", transform: "180", width: "32.8" },
+            3: { height: "21.2", left: "45.4", top: "38", transform: "180", width: "32.8" },
+            4: { height: "21.3", left: "45.4", top: "38", transform: "181", width: "32.8" },
+            5: { height: "21.3", left: "46", top: "38.6", transform: "181", width: "32.6" },
+            6: { height: "21.35", left: "46.1", top: "38.9", transform: "181", width: "32.5" },
+            7: { height: "21.35", left: "46.2", top: "38.9", transform: "181", width: "32.5" },
+            8: { height: "21.3", left: "46.7", top: "39.9", transform: "182", width: "32.5" },
+            9: { height: "21.2", left: "47", top: "40.5", transform: "182", width: "32.6" },
+            10: { height: "21.2", left: "47", top: "40.5", transform: "184", width: "32.6" },
+            11: { height: "21.3", left: "47.9", top: "41.6", transform: "184", width: "32.5" },
+            12: { height: "21.2", left: "48.2", top: "42.4", transform: "184", width: "32.6" },
+            13: { height: "21.2", left: "48.2", top: "42.4", transform: "184", width: "32.6" },
+            14: { height: "21.3", left: "49.2", top: "43.8", transform: "186", width: "32.5" },
+            15: { height: "21.1", left: "49.6", top: "44.8", transform: "188", width: "32.6" },
+            16: { height: "21.1", left: "49.6", top: "44.8", transform: "188", width: "32.6" },
+            17: { height: "21.1", left: "51", top: "46.5", transform: "187", width: "32" },
+            18: { height: "21.1", left: "51.7", top: "47.4", transform: "188", width: "31.7" },
+            19: { height: "21.1", left: "51.7", top: "47.4", transform: "188", width: "31.7" },
+            20: { height: "21.0", left: "52.9", top: "49.4", transform: "189", width: "31.5" },
+            21: { height: "21.0", left: "53.8", top: "50.5", transform: "190", width: "31" },
+            22: { height: "21.0", left: "53.8", top: "50.5", transform: "190", width: "31" },
+            23: { height: "21.0", left: "54.8", top: "52.7", transform: "193", width: "31.6" },
+            24: { height: "21.2", left: "55.6", top: "53.6", transform: "194", width: "31.2" },
+            25: { height: "21.2", left: "55.6", top: "53.6", transform: "194", width: "31.2" },
+            26: { height: "21.2", left: "57.2", top: "55.8", transform: "195", width: "30.2" },
+            27: { height: "21.1", left: "57.9", top: "57", transform: "197", width: "30.1" },
+            28: { height: "21.1", left: "57.9", top: "57", transform: "197", width: "30.1" },
+            29: { height: "21.1", left: "59.5", top: "59.2", transform: "199", width: "29.6" },
+            30: { height: "21.0", left: "60.3", top: "60.5", transform: "200", width: "28.9" },
+            31: { height: "21.0", left: "60.3", top: "60.5", transform: "200", width: "28.9" },
+            32: { height: "21.0", left: "61.6", top: "62.9", transform: "203", width: "28.4" },
+            33: { height: "21", left: "62.2", top: "64", transform: "205", width: "28.6" },
+            34: { height: "21", left: "62.2", top: "64", transform: "205", width: "28.6" },
+            35: { height: "21.2", left: "63.6", top: "66.3", transform: "209", width: "28.3" },
+            36: { height: "21", left: "64.6", top: "67.6", transform: "209", width: "27" },
+            37: { height: "21", left: "64.6", top: "67.6", transform: "209", width: "27" },
+            38: { height: "20.8", left: "66.3", top: "70", transform: "210", width: "25.4" },
+            39: { height: "20.8", left: "67", top: "71.2", transform: "213", width: "25.3" },
+            40: { height: "20.8", left: "67", top: "71.2", transform: "213", width: "25.3" },
+            41: { height: "20.5", left: "67.9", top: "73.5", transform: "217", width: "25.1" },
+            42: { height: "20.5", left: "68.5", top: "74.8", transform: "218", width: "24.3" },
+            43: { height: "20.5", left: "68.5", top: "74.8", transform: "218", width: "24.3" },
+            44: { height: "20.4", left: "69.3", top: "77.1", transform: "221", width: "24" },
+            45: { height: "20.6", left: "70.2", top: "78.1", transform: "223", width: "23" },
+            46: { height: "20.6", left: "70.2", top: "78.1", transform: "223", width: "23" },
+            47: { height: "20.5", left: "71.2", top: "80.1", transform: "226", width: "22" },
+            48: { height: "20.3", left: "71.3", top: "81.2", transform: "228", width: "22" },
+            49: { height: "20.3", left: "71.3", top: "81.2", transform: "228", width: "22" },
+            50: { height: "20.2", left: "72.2", top: "83", transform: "232", width: "21" },
+            51: { height: "20.2", left: "72.3", top: "84", transform: "235", width: "20.9" },
+            52: { height: "20.2", left: "72.3", top: "84", transform: "235", width: "20.9" },
+            53: { height: "20.2", left: "72.5", top: "85.8", transform: "239", width: "20.8" },
+            54: { height: "20.2", left: "72.6", top: "86.8", transform: "241", width: "20.7" },
+            55: { height: "20.2", left: "72.6", top: "86.8", transform: "241", width: "20.7" },
+            56: { height: "20.2", left: "72.7", top: "88", transform: "246", width: "20.7" },
+            57: { height: "20.2", left: "72.7", top: "89", transform: "248", width: "20.7" },
+            58: { height: "20.2", left: "72.7", top: "89", transform: "248", width: "20.7" },
+            59: { height: "20.2", left: "73", top: "91", transform: "250", width: "20.7" },
+            60: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            61: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            62: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            63: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            64: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            65: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            66: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            67: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            68: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            69: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            70: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            71: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            72: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            73: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            74: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            75: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            76: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            77: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            78: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            79: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            80: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+            81: { height: "20.2", left: "73", top: "93", transform: "251", width: "20.7" },
+        }
+        // let centerToBottom =
+        // {
+        //     '1': {
+        //         height: '21.2',
+        //         left: '45',
+        //         top: '37.5',
+        //         transform: '180',
+        //         width: '32.8'
+        //     },
+        //     '2': {
+        //         height: '21.20',
+        //         left: '45.10',
+        //         top: '37.65',
+        //         transform: '180.00',
+        //         width: '32.80'
+        //     },
+        //     '3': {
+        //         height: '21.2',
+        //         left: '45.2',
+        //         top: '37.8',
+        //         transform: '180',
+        //         width: '32.8'
+        //     },
+        //     '4': {
+        //         height: '21.20',
+        //         left: '45.30',
+        //         top: '37.90',
+        //         transform: '180.00',
+        //         width: '32.80'
+        //     },
+        //     '5': {
+        //         height: '21.2',
+        //         left: '45.4',
+        //         top: '38',
+        //         transform: '180',
+        //         width: '32.8'
+        //     },
+        //     '6': {
+        //         height: '21.25',
+        //         left: '45.40',
+        //         top: '38.00',
+        //         transform: '180.50',
+        //         width: '32.80'
+        //     },
+        //     '7': {
+        //         height: '21.3',
+        //         left: '45.4',
+        //         top: '38',
+        //         transform: '181',
+        //         width: '32.8'
+        //     },
+        //     '8': {
+        //         height: '21.30',
+        //         left: '45.70',
+        //         top: '38.30',
+        //         transform: '181.00',
+        //         width: '32.70'
+        //     },
+        //     '9': {
+        //         height: '21.3',
+        //         left: '46',
+        //         top: '38.6',
+        //         transform: '181',
+        //         width: '32.6'
+        //     },
+        //     '10': {
+        //         height: '21.33',
+        //         left: '46.05',
+        //         top: '38.75',
+        //         transform: '181.00',
+        //         width: '32.55'
+        //     },
+        //     '11': {
+        //         height: '21.35',
+        //         left: '46.1',
+        //         top: '38.9',
+        //         transform: '181',
+        //         width: '32.5'
+        //     },
+        //     '12': {
+        //         height: '21.35',
+        //         left: '46.15',
+        //         top: '38.90',
+        //         transform: '181.00',
+        //         width: '32.50'
+        //     },
+        //     '13': {
+        //         height: '21.35',
+        //         left: '46.2',
+        //         top: '38.9',
+        //         transform: '181',
+        //         width: '32.5'
+        //     },
+        //     '14': {
+        //         height: '21.33',
+        //         left: '46.45',
+        //         top: '39.40',
+        //         transform: '181.50',
+        //         width: '32.50'
+        //     },
+        //     '15': {
+        //         height: '21.3',
+        //         left: '46.7',
+        //         top: '39.9',
+        //         transform: '182',
+        //         width: '32.5'
+        //     },
+        //     '16': {
+        //         height: '21.25',
+        //         left: '46.85',
+        //         top: '40.20',
+        //         transform: '182.00',
+        //         width: '32.55'
+        //     },
+        //     '17': {
+        //         height: '21.2',
+        //         left: '47',
+        //         top: '40.5',
+        //         transform: '182',
+        //         width: '32.6'
+        //     },
+        //     '18': {
+        //         height: '21.20',
+        //         left: '47.00',
+        //         top: '40.50',
+        //         transform: '183.00',
+        //         width: '32.60'
+        //     },
+        //     '19': {
+        //         height: '21.2',
+        //         left: '47',
+        //         top: '40.5',
+        //         transform: '184',
+        //         width: '32.6'
+        //     },
+        //     '20': {
+        //         height: '21.25',
+        //         left: '47.45',
+        //         top: '41.05',
+        //         transform: '184.00',
+        //         width: '32.55'
+        //     },
+        //     '21': {
+        //         height: '21.3',
+        //         left: '47.9',
+        //         top: '41.6',
+        //         transform: '184',
+        //         width: '32.5'
+        //     },
+        //     '22': {
+        //         height: '21.25',
+        //         left: '48.05',
+        //         top: '42.00',
+        //         transform: '184.00',
+        //         width: '32.55'
+        //     },
+        //     '23': {
+        //         height: '21.2',
+        //         left: '48.2',
+        //         top: '42.4',
+        //         transform: '184',
+        //         width: '32.6'
+        //     },
+        //     '24': {
+        //         height: '21.20',
+        //         left: '48.20',
+        //         top: '42.40',
+        //         transform: '184.00',
+        //         width: '32.60'
+        //     },
+        //     '25': {
+        //         height: '21.2',
+        //         left: '48.2',
+        //         top: '42.4',
+        //         transform: '184',
+        //         width: '32.6'
+        //     },
+        //     '26': {
+        //         height: '21.25',
+        //         left: '48.70',
+        //         top: '43.10',
+        //         transform: '185.00',
+        //         width: '32.55'
+        //     },
+        //     '27': {
+        //         height: '21.3',
+        //         left: '49.2',
+        //         top: '43.8',
+        //         transform: '186',
+        //         width: '32.5'
+        //     },
+        //     '28': {
+        //         height: '21.20',
+        //         left: '49.40',
+        //         top: '44.30',
+        //         transform: '187.00',
+        //         width: '32.55'
+        //     },
+        //     '29': {
+        //         height: '21.1',
+        //         left: '49.6',
+        //         top: '44.8',
+        //         transform: '188',
+        //         width: '32.6'
+        //     },
+        //     '30': {
+        //         height: '21.10',
+        //         left: '49.60',
+        //         top: '44.80',
+        //         transform: '188.00',
+        //         width: '32.60'
+        //     },
+        //     '31': {
+        //         height: '21.1',
+        //         left: '49.6',
+        //         top: '44.8',
+        //         transform: '188',
+        //         width: '32.6'
+        //     },
+        //     '32': {
+        //         height: '21.10',
+        //         left: '50.30',
+        //         top: '45.65',
+        //         transform: '187.50',
+        //         width: '32.30'
+        //     },
+        //     '33': {
+        //         height: '21.1',
+        //         left: '51',
+        //         top: '46.5',
+        //         transform: '187',
+        //         width: '32'
+        //     },
+        //     '34': {
+        //         height: '21.10',
+        //         left: '51.35',
+        //         top: '46.95',
+        //         transform: '187.50',
+        //         width: '31.85'
+        //     },
+        //     '35': {
+        //         height: '21.1',
+        //         left: '51.7',
+        //         top: '47.4',
+        //         transform: '188',
+        //         width: '31.7'
+        //     },
+        //     '36': {
+        //         height: '21.10',
+        //         left: '51.70',
+        //         top: '47.40',
+        //         transform: '188.00',
+        //         width: '31.70'
+        //     },
+        //     '37': {
+        //         height: '21.1',
+        //         left: '51.7',
+        //         top: '47.4',
+        //         transform: '188',
+        //         width: '31.7'
+        //     },
+        //     '38': {
+        //         height: '21.05',
+        //         left: '52.30',
+        //         top: '48.40',
+        //         transform: '188.50',
+        //         width: '31.60'
+        //     },
+        //     '39': {
+        //         height: '21.0',
+        //         left: '52.9',
+        //         top: '49.4',
+        //         transform: '189',
+        //         width: '31.5'
+        //     },
+        //     '40': {
+        //         height: '21.00',
+        //         left: '53.35',
+        //         top: '49.95',
+        //         transform: '189.50',
+        //         width: '31.25'
+        //     },
+        //     '41': {
+        //         height: '21.0',
+        //         left: '53.8',
+        //         top: '50.5',
+        //         transform: '190',
+        //         width: '31'
+        //     },
+        //     '42': {
+        //         height: '21.00',
+        //         left: '53.80',
+        //         top: '50.50',
+        //         transform: '190.00',
+        //         width: '31.00'
+        //     },
+        //     '43': {
+        //         height: '21.0',
+        //         left: '53.8',
+        //         top: '50.5',
+        //         transform: '190',
+        //         width: '31'
+        //     },
+        //     '44': {
+        //         height: '21.00',
+        //         left: '54.30',
+        //         top: '51.60',
+        //         transform: '191.50',
+        //         width: '31.30'
+        //     },
+        //     '45': {
+        //         height: '21.0',
+        //         left: '54.8',
+        //         top: '52.7',
+        //         transform: '193',
+        //         width: '31.6'
+        //     },
+        //     '46': {
+        //         height: '21.10',
+        //         left: '55.20',
+        //         top: '53.15',
+        //         transform: '193.50',
+        //         width: '31.40'
+        //     },
+        //     '47': {
+        //         height: '21.2',
+        //         left: '55.6',
+        //         top: '53.6',
+        //         transform: '194',
+        //         width: '31.2'
+        //     },
+        //     '48': {
+        //         height: '21.20',
+        //         left: '55.60',
+        //         top: '53.60',
+        //         transform: '194.00',
+        //         width: '31.20'
+        //     },
+        //     '49': {
+        //         height: '21.2',
+        //         left: '55.6',
+        //         top: '53.6',
+        //         transform: '194',
+        //         width: '31.2'
+        //     },
+        //     '50': {
+        //         height: '21.20',
+        //         left: '56.40',
+        //         top: '54.70',
+        //         transform: '194.50',
+        //         width: '30.70'
+        //     },
+        //     '51': {
+        //         height: '21.2',
+        //         left: '57.2',
+        //         top: '55.8',
+        //         transform: '195',
+        //         width: '30.2'
+        //     },
+        //     '52': {
+        //         height: '21.15',
+        //         left: '57.55',
+        //         top: '56.40',
+        //         transform: '196.00',
+        //         width: '30.15'
+        //     },
+        //     '53': {
+        //         height: '21.1',
+        //         left: '57.9',
+        //         top: '57',
+        //         transform: '197',
+        //         width: '30.1'
+        //     },
+        //     '54': {
+        //         height: '21.10',
+        //         left: '57.90',
+        //         top: '57.00',
+        //         transform: '197.00',
+        //         width: '30.10'
+        //     },
+        //     '55': {
+        //         height: '21.1',
+        //         left: '57.9',
+        //         top: '57',
+        //         transform: '197',
+        //         width: '30.1'
+        //     },
+        //     '56': {
+        //         height: '21.10',
+        //         left: '58.70',
+        //         top: '58.10',
+        //         transform: '198.00',
+        //         width: '29.85'
+        //     },
+        //     '57': {
+        //         height: '21.1',
+        //         left: '59.5',
+        //         top: '59.2',
+        //         transform: '199',
+        //         width: '29.6'
+        //     },
+        //     '58': {
+        //         height: '21.05',
+        //         left: '59.90',
+        //         top: '59.85',
+        //         transform: '199.50',
+        //         width: '29.25'
+        //     },
+        //     '59': {
+        //         height: '21.0',
+        //         left: '60.3',
+        //         top: '60.5',
+        //         transform: '200',
+        //         width: '28.9'
+        //     },
+        //     '60': {
+        //         height: '21.00',
+        //         left: '60.30',
+        //         top: '60.50',
+        //         transform: '200.00',
+        //         width: '28.90'
+        //     },
+        //     '61': {
+        //         height: '21.0',
+        //         left: '60.3',
+        //         top: '60.5',
+        //         transform: '200',
+        //         width: '28.9'
+        //     },
+        //     '62': {
+        //         height: '21.00',
+        //         left: '60.95',
+        //         top: '61.70',
+        //         transform: '201.50',
+        //         width: '28.65'
+        //     },
+        //     '63': {
+        //         height: '21.0',
+        //         left: '61.6',
+        //         top: '62.9',
+        //         transform: '203',
+        //         width: '28.4'
+        //     },
+        //     '64': {
+        //         height: '21.00',
+        //         left: '61.90',
+        //         top: '63.45',
+        //         transform: '204.00',
+        //         width: '28.50'
+        //     },
+        //     '65': {
+        //         height: '21',
+        //         left: '62.2',
+        //         top: '64',
+        //         transform: '205',
+        //         width: '28.6'
+        //     },
+        //     '66': {
+        //         height: '21.00',
+        //         left: '62.20',
+        //         top: '64.00',
+        //         transform: '205.00',
+        //         width: '28.60'
+        //     },
+        //     '67': {
+        //         height: '21',
+        //         left: '62.2',
+        //         top: '64',
+        //         transform: '205',
+        //         width: '28.6'
+        //     },
+        //     '68': {
+        //         height: '21.10',
+        //         left: '62.90',
+        //         top: '65.15',
+        //         transform: '207.00',
+        //         width: '28.45'
+        //     },
+        //     '69': {
+        //         height: '21.2',
+        //         left: '63.6',
+        //         top: '66.3',
+        //         transform: '209',
+        //         width: '28.3'
+        //     },
+        //     '70': {
+        //         height: '21.10',
+        //         left: '64.10',
+        //         top: '66.95',
+        //         transform: '209.00',
+        //         width: '27.65'
+        //     },
+        //     '71': {
+        //         height: '21',
+        //         left: '64.6',
+        //         top: '67.6',
+        //         transform: '209',
+        //         width: '27'
+        //     },
+        //     '72': {
+        //         height: '21.00',
+        //         left: '64.60',
+        //         top: '67.60',
+        //         transform: '209.00',
+        //         width: '27.00'
+        //     },
+        //     '73': {
+        //         height: '21',
+        //         left: '64.6',
+        //         top: '67.6',
+        //         transform: '209',
+        //         width: '27'
+        //     },
+        //     '74': {
+        //         height: '20.90',
+        //         left: '65.45',
+        //         top: '68.80',
+        //         transform: '209.50',
+        //         width: '26.20'
+        //     },
+        //     '75': {
+        //         height: '20.8',
+        //         left: '66.3',
+        //         top: '70',
+        //         transform: '210',
+        //         width: '25.4'
+        //     },
+        //     '76': {
+        //         height: '20.80',
+        //         left: '66.65',
+        //         top: '70.60',
+        //         transform: '211.50',
+        //         width: '25.35'
+        //     },
+        //     '77': {
+        //         height: '20.8',
+        //         left: '67',
+        //         top: '71.2',
+        //         transform: '213',
+        //         width: '25.3'
+        //     },
+        //     '78': {
+        //         height: '20.80',
+        //         left: '67.00',
+        //         top: '71.20',
+        //         transform: '213.00',
+        //         width: '25.30'
+        //     },
+        //     '79': {
+        //         height: '20.8',
+        //         left: '67',
+        //         top: '71.2',
+        //         transform: '213',
+        //         width: '25.3'
+        //     },
+        //     '80': {
+        //         height: '20.65',
+        //         left: '67.45',
+        //         top: '72.35',
+        //         transform: '215.00',
+        //         width: '25.20'
+        //     },
+        //     '81': {
+        //         height: '20.5',
+        //         left: '67.9',
+        //         top: '73.5',
+        //         transform: '217',
+        //         width: '25.1'
+        //     },
+        //     '82': {
+        //         height: '20.50',
+        //         left: '68.20',
+        //         top: '74.15',
+        //         transform: '217.50',
+        //         width: '24.70'
+        //     },
+        //     '83': {
+        //         height: '20.5',
+        //         left: '68.5',
+        //         top: '74.8',
+        //         transform: '218',
+        //         width: '24.3'
+        //     },
+        //     '84': {
+        //         height: '20.50',
+        //         left: '68.50',
+        //         top: '74.80',
+        //         transform: '218.00',
+        //         width: '24.30'
+        //     },
+        //     '85': {
+        //         height: '20.5',
+        //         left: '68.5',
+        //         top: '74.8',
+        //         transform: '218',
+        //         width: '24.3'
+        //     },
+        //     '86': {
+        //         height: '20.45',
+        //         left: '68.90',
+        //         top: '75.95',
+        //         transform: '219.50',
+        //         width: '24.15'
+        //     },
+        //     '87': {
+        //         height: '20.4',
+        //         left: '69.3',
+        //         top: '77.1',
+        //         transform: '221',
+        //         width: '24'
+        //     },
+        //     '88': {
+        //         height: '20.50',
+        //         left: '69.75',
+        //         top: '77.60',
+        //         transform: '222.00',
+        //         width: '23.50'
+        //     },
+        //     '89': {
+        //         height: '20.6',
+        //         left: '70.2',
+        //         top: '78.1',
+        //         transform: '223',
+        //         width: '23'
+        //     },
+        //     '90': {
+        //         height: '20.60',
+        //         left: '70.20',
+        //         top: '78.10',
+        //         transform: '223.00',
+        //         width: '23.00'
+        //     },
+        //     '91': {
+        //         height: '20.6',
+        //         left: '70.2',
+        //         top: '78.1',
+        //         transform: '223',
+        //         width: '23'
+        //     },
+        //     '92': {
+        //         height: '20.55',
+        //         left: '70.70',
+        //         top: '79.10',
+        //         transform: '224.50',
+        //         width: '22.50'
+        //     },
+        //     '93': {
+        //         height: '20.5',
+        //         left: '71.2',
+        //         top: '80.1',
+        //         transform: '226',
+        //         width: '22'
+        //     },
+        //     '94': {
+        //         height: '20.40',
+        //         left: '71.25',
+        //         top: '80.65',
+        //         transform: '227.00',
+        //         width: '22.00'
+        //     },
+        //     '95': {
+        //         height: '20.3',
+        //         left: '71.3',
+        //         top: '81.2',
+        //         transform: '228',
+        //         width: '22'
+        //     },
+        //     '96': {
+        //         height: '20.30',
+        //         left: '71.30',
+        //         top: '81.20',
+        //         transform: '228.00',
+        //         width: '22.00'
+        //     },
+        //     '97': {
+        //         height: '20.3',
+        //         left: '71.3',
+        //         top: '81.2',
+        //         transform: '228',
+        //         width: '22'
+        //     },
+        //     '98': {
+        //         height: '20.25',
+        //         left: '71.75',
+        //         top: '82.10',
+        //         transform: '230.00',
+        //         width: '21.50'
+        //     },
+        //     '99': {
+        //         height: '20.2',
+        //         left: '72.2',
+        //         top: '83',
+        //         transform: '232',
+        //         width: '21'
+        //     },
+        //     '100': {
+        //         height: '20.20',
+        //         left: '72.25',
+        //         top: '83.50',
+        //         transform: '233.50',
+        //         width: '20.95'
+        //     },
+        //     '101': {
+        //         height: '20.2',
+        //         left: '72.3',
+        //         top: '84',
+        //         transform: '235',
+        //         width: '20.9'
+        //     },
+        //     '102': {
+        //         height: '20.20',
+        //         left: '72.30',
+        //         top: '84.00',
+        //         transform: '235.00',
+        //         width: '20.90'
+        //     },
+        //     '103': {
+        //         height: '20.2',
+        //         left: '72.3',
+        //         top: '84',
+        //         transform: '235',
+        //         width: '20.9'
+        //     },
+        //     '104': {
+        //         height: '20.20',
+        //         left: '72.40',
+        //         top: '84.90',
+        //         transform: '237.00',
+        //         width: '20.85'
+        //     },
+        //     '105': {
+        //         height: '20.2',
+        //         left: '72.5',
+        //         top: '85.8',
+        //         transform: '239',
+        //         width: '20.8'
+        //     },
+        //     '106': {
+        //         height: '20.20',
+        //         left: '72.55',
+        //         top: '86.30',
+        //         transform: '240.00',
+        //         width: '20.75'
+        //     },
+        //     '107': {
+        //         height: '20.2',
+        //         left: '72.6',
+        //         top: '86.8',
+        //         transform: '241',
+        //         width: '20.7'
+        //     },
+        //     '108': {
+        //         height: '20.20',
+        //         left: '72.60',
+        //         top: '86.80',
+        //         transform: '241.00',
+        //         width: '20.70'
+        //     },
+        //     '109': {
+        //         height: '20.2',
+        //         left: '72.6',
+        //         top: '86.8',
+        //         transform: '241',
+        //         width: '20.7'
+        //     },
+        //     '110': {
+        //         height: '20.20',
+        //         left: '72.65',
+        //         top: '87.40',
+        //         transform: '243.50',
+        //         width: '20.70'
+        //     },
+        //     '111': {
+        //         height: '20.2',
+        //         left: '72.7',
+        //         top: '88',
+        //         transform: '246',
+        //         width: '20.7'
+        //     },
+        //     '112': {
+        //         height: '20.20',
+        //         left: '72.70',
+        //         top: '88.50',
+        //         transform: '247.00',
+        //         width: '20.70'
+        //     },
+        //     '113': {
+        //         height: '20.2',
+        //         left: '72.7',
+        //         top: '89',
+        //         transform: '248',
+        //         width: '20.7'
+        //     },
+        //     '114': {
+        //         height: '20.20',
+        //         left: '72.70',
+        //         top: '89.00',
+        //         transform: '248.00',
+        //         width: '20.70'
+        //     },
+        //     '115': {
+        //         height: '20.2',
+        //         left: '72.7',
+        //         top: '89',
+        //         transform: '248',
+        //         width: '20.7'
+        //     },
+        //     '116': {
+        //         height: '20.20',
+        //         left: '72.85',
+        //         top: '90.00',
+        //         transform: '249.00',
+        //         width: '20.70'
+        //     },
+        //     '117': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '91',
+        //         transform: '250',
+        //         width: '20.7'
+        //     },
+        //     '118': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '92.00',
+        //         transform: '250.50',
+        //         width: '20.70'
+        //     },
+        //     '119': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '120': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '121': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '122': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '123': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '124': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '125': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '126': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '127': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '128': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '129': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '130': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '131': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '132': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '133': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '134': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '135': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '136': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '137': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '138': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '139': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '140': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '141': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '142': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '143': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '144': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '145': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '146': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '147': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '148': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '149': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '150': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '151': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '152': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '153': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '154': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '155': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '156': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '157': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '158': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '159': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     },
+        //     '160': {
+        //         height: '20.20',
+        //         left: '73.00',
+        //         top: '93.00',
+        //         transform: '251.00',
+        //         width: '20.70'
+        //     },
+        //     '161': {
+        //         height: '20.2',
+        //         left: '73',
+        //         top: '93',
+        //         transform: '251',
+        //         width: '20.7'
+        //     }
+        // }
+
+
+        // const topToBottom = {
+        //     '1': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '2': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '3': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '4': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '5': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '6': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '7': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '8': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '9': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '10': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '11': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '12': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '13': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '14': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '15': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '16': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '17': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '18': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '19': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '20': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '21': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '22': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-22.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '23': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-22',
+        //         transform: '100',
+        //         width: '22.4'
+        //     },
+        //     '24': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-20.50',
+        //         transform: '99.50',
+        //         width: '22.40'
+        //     },
+        //     '25': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-19',
+        //         transform: '99',
+        //         width: '22.4'
+        //     },
+        //     '26': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-18.00',
+        //         transform: '100.00',
+        //         width: '22.40'
+        //     },
+        //     '27': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-17',
+        //         transform: '101',
+        //         width: '22.4'
+        //     },
+        //     '28': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-16.50',
+        //         transform: '102.00',
+        //         width: '22.35'
+        //     },
+        //     '29': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-16',
+        //         transform: '103',
+        //         width: '22.3'
+        //     },
+        //     '30': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-16.00',
+        //         transform: '103.00',
+        //         width: '22.30'
+        //     },
+        //     '31': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-16',
+        //         transform: '103',
+        //         width: '22.3'
+        //     },
+        //     '32': {
+        //         height: '19.00',
+        //         left: '24.50',
+        //         top: '-15.50',
+        //         transform: '104.50',
+        //         width: '22.30'
+        //     },
+        //     '33': {
+        //         height: '19',
+        //         left: '24.6',
+        //         top: '-15',
+        //         transform: '106',
+        //         width: '22.3'
+        //     },
+        //     '34': {
+        //         height: '19.00',
+        //         left: '24.50',
+        //         top: '-14.25',
+        //         transform: '106.00',
+        //         width: '22.30'
+        //     },
+        //     '35': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-13.5',
+        //         transform: '106',
+        //         width: '22.3'
+        //     },
+        //     '36': {
+        //         height: '19.00',
+        //         left: '24.40',
+        //         top: '-13.50',
+        //         transform: '106.00',
+        //         width: '22.30'
+        //     },
+        //     '37': {
+        //         height: '19',
+        //         left: '24.4',
+        //         top: '-13.5',
+        //         transform: '106',
+        //         width: '22.3'
+        //     },
+        //     '38': {
+        //         height: '19.00',
+        //         left: '24.60',
+        //         top: '-13.25',
+        //         transform: '108.00',
+        //         width: '22.30'
+        //     },
+        //     '39': {
+        //         height: '19',
+        //         left: '24.8',
+        //         top: '-13',
+        //         transform: '110',
+        //         width: '22.3'
+        //     },
+        //     '40': {
+        //         height: '19.00',
+        //         left: '24.70',
+        //         top: '-12.55',
+        //         transform: '110.50',
+        //         width: '22.50'
+        //     },
+        //     '41': {
+        //         height: '19',
+        //         left: '24.6',
+        //         top: '-12.1',
+        //         transform: '111',
+        //         width: '22.7'
+        //     },
+        //     '42': {
+        //         height: '19.00',
+        //         left: '24.60',
+        //         top: '-12.10',
+        //         transform: '111.00',
+        //         width: '22.70'
+        //     },
+        //     '43': {
+        //         height: '19',
+        //         left: '24.6',
+        //         top: '-12.1',
+        //         transform: '111',
+        //         width: '22.7'
+        //     },
+        //     '44': {
+        //         height: '19.00',
+        //         left: '24.80',
+        //         top: '-11.55',
+        //         transform: '113.00',
+        //         width: '22.70'
+        //     },
+        //     '45': {
+        //         height: '19',
+        //         left: '25',
+        //         top: '-11',
+        //         transform: '115',
+        //         width: '22.7'
+        //     },
+        //     '46': {
+        //         height: '19.00',
+        //         left: '25.00',
+        //         top: '-10.50',
+        //         transform: '116.50',
+        //         width: '22.75'
+        //     },
+        //     '47': {
+        //         height: '19',
+        //         left: '25',
+        //         top: '-10',
+        //         transform: '118',
+        //         width: '22.8'
+        //     },
+        //     '48': {
+        //         height: '19.00',
+        //         left: '25.00',
+        //         top: '-10.00',
+        //         transform: '118.00',
+        //         width: '22.80'
+        //     },
+        //     '49': {
+        //         height: '19',
+        //         left: '25',
+        //         top: '-10',
+        //         transform: '118',
+        //         width: '22.8'
+        //     },
+        //     '50': {
+        //         height: '19.40',
+        //         left: '25.20',
+        //         top: '-9.50',
+        //         transform: '119.50',
+        //         width: '22.80'
+        //     },
+        //     '51': {
+        //         height: '19.8',
+        //         left: '25.4',
+        //         top: '-9',
+        //         transform: '121',
+        //         width: '22.8'
+        //     },
+        //     '52': {
+        //         height: '19.80',
+        //         left: '25.40',
+        //         top: '-8.50',
+        //         transform: '122.00',
+        //         width: '22.90'
+        //     },
+        //     '53': {
+        //         height: '19.8',
+        //         left: '25.4',
+        //         top: '-8',
+        //         transform: '123',
+        //         width: '23'
+        //     },
+        //     '54': {
+        //         height: '19.80',
+        //         left: '25.40',
+        //         top: '-8.00',
+        //         transform: '123.00',
+        //         width: '23.00'
+        //     },
+        //     '55': {
+        //         height: '19.8',
+        //         left: '25.4',
+        //         top: '-8',
+        //         transform: '123',
+        //         width: '23'
+        //     },
+        //     '56': {
+        //         height: '19.80',
+        //         left: '25.10',
+        //         top: '-7.00',
+        //         transform: '124.00',
+        //         width: '24.00'
+        //     },
+        //     '57': {
+        //         height: '19.8',
+        //         left: '24.8',
+        //         top: '-6',
+        //         transform: '125',
+        //         width: '25'
+        //     },
+        //     '58': {
+        //         height: '19.80',
+        //         left: '24.55',
+        //         top: '-5.70',
+        //         transform: '125.50',
+        //         width: '25.60'
+        //     },
+        //     '59': {
+        //         height: '19.8',
+        //         left: '24.3',
+        //         top: '-5.4',
+        //         transform: '126',
+        //         width: '26.2'
+        //     },
+        //     '60': {
+        //         height: '19.80',
+        //         left: '24.30',
+        //         top: '-5.40',
+        //         transform: '126.00',
+        //         width: '26.20'
+        //     },
+        //     '61': {
+        //         height: '19.8',
+        //         left: '24.3',
+        //         top: '-5.4',
+        //         transform: '126',
+        //         width: '26.2'
+        //     },
+        //     '62': {
+        //         height: '19.90',
+        //         left: '24.50',
+        //         top: '-4.45',
+        //         transform: '128.00',
+        //         width: '26.20'
+        //     },
+        //     '63': {
+        //         height: '20',
+        //         left: '24.7',
+        //         top: '-3.5',
+        //         transform: '130',
+        //         width: '26.2'
+        //     },
+        //     '64': {
+        //         height: '20.00',
+        //         left: '24.70',
+        //         top: '-3.15',
+        //         transform: '130.00',
+        //         width: '26.70'
+        //     },
+        //     '65': {
+        //         height: '20',
+        //         left: '24.7',
+        //         top: '-2.8',
+        //         transform: '130',
+        //         width: '27.2'
+        //     },
+        //     '66': {
+        //         height: '20.00',
+        //         left: '24.70',
+        //         top: '-2.80',
+        //         transform: '130.00',
+        //         width: '27.20'
+        //     },
+        //     '67': {
+        //         height: '20',
+        //         left: '24.7',
+        //         top: '-2.8',
+        //         transform: '130',
+        //         width: '27.2'
+        //     },
+        //     '68': {
+        //         height: '19.90',
+        //         left: '25.05',
+        //         top: '-1.65',
+        //         transform: '131.50',
+        //         width: '27.45'
+        //     },
+        //     '69': {
+        //         height: '19.8',
+        //         left: '25.4',
+        //         top: '-.5',
+        //         transform: '133',
+        //         width: '27.7'
+        //     },
+        //     '70': {
+        //         height: '19.85',
+        //         left: '25.55',
+        //         top: '0.05',
+        //         transform: '134.50',
+        //         width: '27.70'
+        //     },
+        //     '71': {
+        //         height: '19.9',
+        //         left: '25.7',
+        //         top: '.6',
+        //         transform: '136',
+        //         width: '27.7'
+        //     },
+        //     '72': {
+        //         height: '19.90',
+        //         left: '25.70',
+        //         top: '0.60',
+        //         transform: '136.00',
+        //         width: '27.70'
+        //     },
+        //     '73': {
+        //         height: '19.9',
+        //         left: '25.7',
+        //         top: '.6',
+        //         transform: '136',
+        //         width: '27.7'
+        //     },
+        //     '74': {
+        //         height: '20.15',
+        //         left: '25.85',
+        //         top: '1.40',
+        //         transform: '137.00',
+        //         width: '28.15'
+        //     },
+        //     '75': {
+        //         height: '20.4',
+        //         left: '26',
+        //         top: '2.2',
+        //         transform: '138',
+        //         width: '28.6'
+        //     },
+        //     '76': {
+        //         height: '20.40',
+        //         left: '26.10',
+        //         top: '2.75',
+        //         transform: '138.50',
+        //         width: '28.95'
+        //     },
+        //     '77': {
+        //         height: '20.4',
+        //         left: '26.2',
+        //         top: '3.3',
+        //         transform: '139',
+        //         width: '29.3'
+        //     },
+        //     '78': {
+        //         height: '20.40',
+        //         left: '26.20',
+        //         top: '3.30',
+        //         transform: '139.00',
+        //         width: '29.30'
+        //     },
+        //     '79': {
+        //         height: '20.4',
+        //         left: '26.2',
+        //         top: '3.3',
+        //         transform: '139',
+        //         width: '29.3'
+        //     },
+        //     '80': {
+        //         height: '20.40',
+        //         left: '26.55',
+        //         top: '4.45',
+        //         transform: '141.00',
+        //         width: '29.70'
+        //     },
+        //     '81': {
+        //         height: '20.4',
+        //         left: '26.9',
+        //         top: '5.6',
+        //         transform: '143',
+        //         width: '30.1'
+        //     },
+        //     '82': {
+        //         height: '20.40',
+        //         left: '27.30',
+        //         top: '6.15',
+        //         transform: '144.00',
+        //         width: '30.00'
+        //     },
+        //     '83': {
+        //         height: '20.4',
+        //         left: '27.7',
+        //         top: '6.7',
+        //         transform: '145',
+        //         width: '29.9'
+        //     },
+        //     '84': {
+        //         height: '20.40',
+        //         left: '27.70',
+        //         top: '6.70',
+        //         transform: '145.00',
+        //         width: '29.90'
+        //     },
+        //     '85': {
+        //         height: '20.4',
+        //         left: '27.7',
+        //         top: '6.7',
+        //         transform: '145',
+        //         width: '29.9'
+        //     },
+        //     '86': {
+        //         height: '20.40',
+        //         left: '28.15',
+        //         top: '7.85',
+        //         transform: '146.50',
+        //         width: '30.15'
+        //     },
+        //     '87': {
+        //         height: '20.4',
+        //         left: '28.6',
+        //         top: '9',
+        //         transform: '148',
+        //         width: '30.4'
+        //     },
+        //     '88': {
+        //         height: '20.45',
+        //         left: '28.85',
+        //         top: '9.55',
+        //         transform: '149.00',
+        //         width: '30.50'
+        //     },
+        //     '89': {
+        //         height: '20.5',
+        //         left: '29.1',
+        //         top: '10.1',
+        //         transform: '150',
+        //         width: '30.6'
+        //     },
+        //     '90': {
+        //         height: '20.50',
+        //         left: '29.10',
+        //         top: '10.10',
+        //         transform: '150.00',
+        //         width: '30.60'
+        //     },
+        //     '91': {
+        //         height: '20.5',
+        //         left: '29.1',
+        //         top: '10.1',
+        //         transform: '150',
+        //         width: '30.6'
+        //     },
+        //     '92': {
+        //         height: '20.50',
+        //         left: '29.70',
+        //         top: '11.25',
+        //         transform: '151.50',
+        //         width: '30.70'
+        //     },
+        //     '93': {
+        //         height: '20.5',
+        //         left: '30.3',
+        //         top: '12.4',
+        //         transform: '153',
+        //         width: '30.8'
+        //     },
+        //     '94': {
+        //         height: '20.60',
+        //         left: '30.65',
+        //         top: '12.90',
+        //         transform: '153.50',
+        //         width: '30.80'
+        //     },
+        //     '95': {
+        //         height: '20.7',
+        //         left: '31',
+        //         top: '13.4',
+        //         transform: '154',
+        //         width: '30.8'
+        //     },
+        //     '96': {
+        //         height: '20.70',
+        //         left: '31.00',
+        //         top: '13.40',
+        //         transform: '154.00',
+        //         width: '30.80'
+        //     },
+        //     '97': {
+        //         height: '20.7',
+        //         left: '31',
+        //         top: '13.4',
+        //         transform: '154',
+        //         width: '30.8'
+        //     },
+        //     '98': {
+        //         height: '20.70',
+        //         left: '31.40',
+        //         top: '14.50',
+        //         transform: '155.50',
+        //         width: '31.20'
+        //     },
+        //     '99': {
+        //         height: '20.7',
+        //         left: '31.8',
+        //         top: '15.6',
+        //         transform: '157',
+        //         width: '31.6'
+        //     },
+        //     '100': {
+        //         height: '20.75',
+        //         left: '32.15',
+        //         top: '16.15',
+        //         transform: '157.50',
+        //         width: '31.60'
+        //     },
+        //     '101': {
+        //         height: '20.8',
+        //         left: '32.5',
+        //         top: '16.7',
+        //         transform: '158',
+        //         width: '31.6'
+        //     },
+        //     '102': {
+        //         height: '20.80',
+        //         left: '32.50',
+        //         top: '16.70',
+        //         transform: '158.00',
+        //         width: '31.60'
+        //     },
+        //     '103': {
+        //         height: '20.8',
+        //         left: '32.5',
+        //         top: '16.7',
+        //         transform: '158',
+        //         width: '31.6'
+        //     },
+        //     '104': {
+        //         height: '20.90',
+        //         left: '33.05',
+        //         top: '17.75',
+        //         transform: '159.00',
+        //         width: '31.85'
+        //     },
+        //     '105': {
+        //         height: '21',
+        //         left: '33.6',
+        //         top: '18.8',
+        //         transform: '160',
+        //         width: '32.1'
+        //     },
+        //     '106': {
+        //         height: '21.00',
+        //         left: '33.90',
+        //         top: '19.35',
+        //         transform: '160.00',
+        //         width: '32.10'
+        //     },
+        //     '107': {
+        //         height: '21',
+        //         left: '34.2',
+        //         top: '19.9',
+        //         transform: '160',
+        //         width: '32.1'
+        //     },
+        //     '108': {
+        //         height: '21.00',
+        //         left: '34.20',
+        //         top: '19.90',
+        //         transform: '160.00',
+        //         width: '32.10'
+        //     },
+        //     '109': {
+        //         height: '21',
+        //         left: '34.2',
+        //         top: '19.9',
+        //         transform: '160',
+        //         width: '32.1'
+        //     },
+        //     '110': {
+        //         height: '21.00',
+        //         left: '34.85',
+        //         top: '20.95',
+        //         transform: '162.00',
+        //         width: '32.10'
+        //     },
+        //     '111': {
+        //         height: '21',
+        //         left: '35.5',
+        //         top: '22',
+        //         transform: '164',
+        //         width: '32.1'
+        //     },
+        //     '112': {
+        //         height: '21.15',
+        //         left: '35.85',
+        //         top: '22.45',
+        //         transform: '165.00',
+        //         width: '32.20'
+        //     },
+        //     '113': {
+        //         height: '21.3',
+        //         left: '36.2',
+        //         top: '22.9',
+        //         transform: '166',
+        //         width: '32.3'
+        //     },
+        //     '114': {
+        //         height: '21.30',
+        //         left: '36.20',
+        //         top: '22.90',
+        //         transform: '166.00',
+        //         width: '32.30'
+        //     },
+        //     '115': {
+        //         height: '21.3',
+        //         left: '36.2',
+        //         top: '22.9',
+        //         transform: '166',
+        //         width: '32.3'
+        //     },
+        //     '116': {
+        //         height: '21.20',
+        //         left: '36.80',
+        //         top: '24.00',
+        //         transform: '166.50',
+        //         width: '32.30'
+        //     },
+        //     '117': {
+        //         height: '21.1',
+        //         left: '37.4',
+        //         top: '25.1',
+        //         transform: '167',
+        //         width: '32.3'
+        //     },
+        //     '118': {
+        //         height: '21.05',
+        //         left: '37.70',
+        //         top: '25.60',
+        //         transform: '167.00',
+        //         width: '32.30'
+        //     },
+        //     '119': {
+        //         height: '21',
+        //         left: '38',
+        //         top: '26.1',
+        //         transform: '167',
+        //         width: '32.3'
+        //     },
+        //     '120': {
+        //         height: '21.00',
+        //         left: '38.00',
+        //         top: '26.10',
+        //         transform: '167.00',
+        //         width: '32.30'
+        //     },
+        //     '121': {
+        //         height: '21',
+        //         left: '38',
+        //         top: '26.1',
+        //         transform: '167',
+        //         width: '32.3'
+        //     },
+        //     '122': {
+        //         height: '21.00',
+        //         left: '38.65',
+        //         top: '27.00',
+        //         transform: '169.00',
+        //         width: '32.30'
+        //     },
+        //     '123': {
+        //         height: '21',
+        //         left: '39.3',
+        //         top: '27.9',
+        //         transform: '171',
+        //         width: '32.3'
+        //     },
+        //     '124': {
+        //         height: '21.00',
+        //         left: '39.60',
+        //         top: '28.30',
+        //         transform: '171.50',
+        //         width: '32.35'
+        //     },
+        //     '125': {
+        //         height: '21',
+        //         left: '39.9',
+        //         top: '28.7',
+        //         transform: '172',
+        //         width: '32.4'
+        //     },
+        //     '126': {
+        //         height: '21.00',
+        //         left: '39.90',
+        //         top: '28.70',
+        //         transform: '172.00',
+        //         width: '32.40'
+        //     },
+        //     '127': {
+        //         height: '21',
+        //         left: '39.9',
+        //         top: '28.7',
+        //         transform: '172',
+        //         width: '32.4'
+        //     },
+        //     '128': {
+        //         height: '21.00',
+        //         left: '40.35',
+        //         top: '29.50',
+        //         transform: '173.00',
+        //         width: '32.45'
+        //     },
+        //     '129': {
+        //         height: '21',
+        //         left: '40.8',
+        //         top: '30.3',
+        //         transform: '174',
+        //         width: '32.5'
+        //     },
+        //     '130': {
+        //         height: '21.00',
+        //         left: '41.05',
+        //         top: '30.75',
+        //         transform: '174.00',
+        //         width: '32.45'
+        //     },
+        //     '131': {
+        //         height: '21',
+        //         left: '41.3',
+        //         top: '31.2',
+        //         transform: '174',
+        //         width: '32.4'
+        //     },
+        //     '132': {
+        //         height: '21.00',
+        //         left: '41.30',
+        //         top: '31.20',
+        //         transform: '174.00',
+        //         width: '32.40'
+        //     },
+        //     '133': {
+        //         height: '21',
+        //         left: '41.3',
+        //         top: '31.2',
+        //         transform: '174',
+        //         width: '32.4'
+        //     },
+        //     '134': {
+        //         height: '21.00',
+        //         left: '41.70',
+        //         top: '31.90',
+        //         transform: '175.00',
+        //         width: '32.50'
+        //     },
+        //     '135': {
+        //         height: '21.0',
+        //         left: '42.1',
+        //         top: '32.6',
+        //         transform: '176',
+        //         width: '32.6'
+        //     },
+        //     '136': {
+        //         height: '21.05',
+        //         left: '42.25',
+        //         top: '32.90',
+        //         transform: '176.00',
+        //         width: '32.65'
+        //     },
+        //     '137': {
+        //         height: '21.1',
+        //         left: '42.4',
+        //         top: '33.2',
+        //         transform: '176',
+        //         width: '32.7'
+        //     },
+        //     '138': {
+        //         height: '21.10',
+        //         left: '42.40',
+        //         top: '33.20',
+        //         transform: '176.00',
+        //         width: '32.70'
+        //     },
+        //     '139': {
+        //         height: '21.1',
+        //         left: '42.4',
+        //         top: '33.2',
+        //         transform: '176',
+        //         width: '32.7'
+        //     },
+        //     '140': {
+        //         height: '21.15',
+        //         left: '42.80',
+        //         top: '33.70',
+        //         transform: '177.50',
+        //         width: '32.70'
+        //     },
+        //     '141': {
+        //         height: '21.2',
+        //         left: '43.2',
+        //         top: '34.2',
+        //         transform: '179',
+        //         width: '32.7'
+        //     },
+        //     '142': {
+        //         height: '21.20',
+        //         left: '43.35',
+        //         top: '34.50',
+        //         transform: '179.00',
+        //         width: '32.70'
+        //     },
+        //     '143': {
+        //         height: '21.2',
+        //         left: '43.5',
+        //         top: '34.8',
+        //         transform: '179',
+        //         width: '32.7'
+        //     },
+        //     '144': {
+        //         height: '21.20',
+        //         left: '43.50',
+        //         top: '34.80',
+        //         transform: '179.00',
+        //         width: '32.70'
+        //     },
+        //     '145': {
+        //         height: '21.2',
+        //         left: '43.5',
+        //         top: '34.8',
+        //         transform: '179',
+        //         width: '32.7'
+        //     },
+        //     '146': {
+        //         height: '21.20',
+        //         left: '43.75',
+        //         top: '35.20',
+        //         transform: '179.00',
+        //         width: '32.70'
+        //     },
+        //     '147': {
+        //         height: '21.2',
+        //         left: '44',
+        //         top: '35.6',
+        //         transform: '179',
+        //         width: '32.7'
+        //     },
+        //     '148': {
+        //         height: '21.20',
+        //         left: '44.10',
+        //         top: '35.75',
+        //         transform: '179.00',
+        //         width: '32.70'
+        //     },
+        //     '149': {
+        //         height: '21.2',
+        //         left: '44.2',
+        //         top: '35.9',
+        //         transform: '179',
+        //         width: '32.7'
+        //     },
+        //     '150': {
+        //         height: '21.20',
+        //         left: '44.20',
+        //         top: '35.90',
+        //         transform: '179.00',
+        //         width: '32.70'
+        //     },
+        //     '151': {
+        //         height: '21.2',
+        //         left: '44.2',
+        //         top: '35.9',
+        //         transform: '179',
+        //         width: '32.7'
+        //     },
+        //     '152': {
+        //         height: '21.20',
+        //         left: '44.35',
+        //         top: '36.20',
+        //         transform: '179.50',
+        //         width: '32.70'
+        //     },
+        //     '153': {
+        //         height: '21.2',
+        //         left: '44.5',
+        //         top: '36.5',
+        //         transform: '180',
+        //         width: '32.7'
+        //     },
+        //     '154': {
+        //         height: '21.25',
+        //         left: '44.50',
+        //         top: '36.55',
+        //         transform: '180.00',
+        //         width: '32.75'
+        //     },
+        //     '155': {
+        //         height: '21.3',
+        //         left: '44.5',
+        //         top: '36.6',
+        //         transform: '180',
+        //         width: '32.8'
+        //     },
+        //     '156': {
+        //         height: '21.30',
+        //         left: '44.50',
+        //         top: '36.60',
+        //         transform: '180.00',
+        //         width: '32.80'
+        //     },
+        //     '157': {
+        //         height: '21.3',
+        //         left: '44.5',
+        //         top: '36.6',
+        //         transform: '180',
+        //         width: '32.8'
+        //     },
+        //     '158': {
+        //         height: '21.30',
+        //         left: '44.55',
+        //         top: '36.60',
+        //         transform: '180.00',
+        //         width: '32.80'
+        //     },
+        //     '159': {
+        //         height: '21.3',
+        //         left: '44.6',
+        //         top: '36.6',
+        //         transform: '180',
+        //         width: '32.8'
+        //     },
+        //     '160': {
+        //         height: '21.30',
+        //         left: '44.60',
+        //         top: '36.60',
+        //         transform: '180.00',
+        //         width: '32.80'
+        //     },
+        //     '161': {
+        //         height: '21.3',
+        //         left: '44.6',
+        //         top: '36.6',
+        //         transform: '180',
+        //         width: '32.8'
+        //     }
+        // }
+
         const firebaseConfig =
             firebase.initializeApp({
                 apiKey: "AIzaSyC1v6FNfEXZET-w4JKcHrUoI93fDefK4Vw",
@@ -300,7 +2568,10 @@
             console.log(moveTop);
             $(".mainBlock").css("top", moveTop);
             $(".videopage").css("top", 0);
-            $("#animatorBox").draggable()
+            $("#animatorBox").draggable();
+            // for (let index = 1; index < 82; index++) {
+            //     $(".videoBlock").append("<img src='" + centerToBottom[index].imageLocation + "' class='ImageBackground' />");
+            // }
 
         });
         function download(filename, text) {
@@ -423,7 +2694,7 @@
             $("#words").html(cssObject)
         }
 
-        createAnimationCSS();
+        createAnimationCSS(centerToBottom);
         var largeRotation = document.getElementById("largeRotation");
         var outputRotation = document.getElementById("RotationDeg");
         var smallRotation = document.getElementById("smallRotation");
@@ -512,47 +2783,91 @@
         });
         frame = 1;
         $('#playButton').click(function (e) {
-            setInterval(() => {
-                if (frame <= 81) {
+            //     vid.playbackRate = 1;
+            $('#v0').get(0).play();
+            $('#v1').get(0).play();
+            // var intervalID = setInterval(function () {
+
+            //     //         var frameNumber = frame / 24;
+            //     //         vid.currentTime = frameNumber;
+            //     //         window.requestAnimationFrame(intervalID);
+            //     if (frame <= 161) {
+
+            //         //             console.log({
+            //         //                 "left": topToBottom[frame].left + "%", "top": topToBottom[frame].top + "%", "transform": topToBottom[frame].transform,
+            //         //                 "width": topToBottom[frame].width + "%", "height": topToBottom[frame].height + "%",
+            //         //             });
+            //         //             // $(".videoBlock").css("background-image", "url(" + centerToBottom[frame].imageLocation + ")");
+            //         //             $("#videopage1").css({
+            //         //                 "left": topToBottom[frame].left + "%", "top": topToBottom[frame].top + "%", "transform": "rotateY(" + topToBottom[frame].transform + "deg)",
+            //         //                 "width": topToBottom[frame].width + "%", "height": topToBottom[frame].height + "%",
+            //         //             });
+            //         //             $("#videopage2").css({
+            //         //                 "left": centerToBottom[frame].left + "%", "top": centerToBottom[frame].top + "%", "transform": "rotateY(" + centerToBottom[frame].transform + "deg)",
+            //         //                 "width": centerToBottom[frame].width + "%", "height": centerToBottom[frame].height + "%",
+            //         //             });
+            //         frame++;
+            //     } else {
+            //         window.clearInterval(intervalID);
+            //         frame = 1;
+            //         //             // $("#videopage1").css({
+            //         //             //     "left": topToBottom[frame].left + "%", "top": topToBottom[frame].top + "%", "transform": "rotateY(" + topToBottom[frame].transform + "deg)",
+            //         //             //     "width": topToBottom[frame].width + "%", "height": topToBottom[frame].height + "%",
+            //         //             // });
+            //         //             // $("#videopage2").css({
+            //         //             //     "left": centerToBottom[frame].left, "top": centerToBottom[frame].top, "transform": centerToBottom[frame].transform,
+            //         //             //     "width": centerToBottom[frame].width, "height": centerToBottom[frame].height
+            //         //             // });
+
+            //     }
 
 
-                    parseInt
-                    console.log({
-                        "left": topToBottom[frame].left + "%", "top": topToBottom[frame].top + "%", "transform": topToBottom[frame].transform,
-                        "width": topToBottom[frame].width + "%", "height": topToBottom[frame].height + "%",
-                    });
-                    $("#videopage1").css({
-                        "left": topToBottom[frame].left + "%", "top": topToBottom[frame].top + "%", "transform": "rotateY(" + topToBottom[frame].transform + "deg)",
-                        "width": topToBottom[frame].width + "%", "height": topToBottom[frame].height + "%",
-                    });
-                    $("#videopage2").css({
-                        "left": centerToBottom[frame].left + "%", "top": centerToBottom[frame].top + "%", "transform": "rotateY(" + centerToBottom[frame].transform + "deg)",
-                        "width": centerToBottom[frame].width + "%", "height": centerToBottom[frame].height + "%",
-                    });
-                    frame++;
-                } else {
+            // }, 0300);
 
-                    frame = 0;
-                    $("#videopage1").css({
-                        "left": topToBottom[frame].left + "%", "top": topToBottom[frame].top + "%", "transform": "rotateY(" + topToBottom[frame].transform + "deg)",
-                        "width": topToBottom[frame].width + "%", "height": topToBottom[frame].height + "%",
-                    });
-                    $("#videopage2").css({
-                        "left": centerToBottom[frame].left, "top": centerToBottom[frame].top, "transform": centerToBottom[frame].transform,
-                        "width": centerToBottom[frame].width, "height": centerToBottom[frame].height
-                    });
+            // setInterval(() => {
+            //     if (frame <= 161) {
 
-                }
-            }, 0025);
+
+
+
+            //         console.log({
+            //             "left": topToBottom[frame].left + "%", "top": topToBottom[frame].top + "%", "transform": topToBottom[frame].transform,
+            //             "width": topToBottom[frame].width + "%", "height": topToBottom[frame].height + "%",
+            //         });
+            //         // $(".videoBlock").css("background-image", "url(" + centerToBottom[frame].imageLocation + ")");
+            //         $("#videopage1").css({
+            //             "left": topToBottom[frame].left + "%", "top": topToBottom[frame].top + "%", "transform": "rotateY(" + topToBottom[frame].transform + "deg)",
+            //             "width": topToBottom[frame].width + "%", "height": topToBottom[frame].height + "%",
+            //         });
+            //         $("#videopage2").css({
+            //             "left": centerToBottom[frame].left + "%", "top": centerToBottom[frame].top + "%", "transform": "rotateY(" + centerToBottom[frame].transform + "deg)",
+            //             "width": centerToBottom[frame].width + "%", "height": centerToBottom[frame].height + "%",
+            //         });
+            //         frame++;
+            //     } else {
+
+            //         frame = 1;
+            //         $("#videopage1").css({
+            //             "left": topToBottom[frame].left + "%", "top": topToBottom[frame].top + "%", "transform": "rotateY(" + topToBottom[frame].transform + "deg)",
+            //             "width": topToBottom[frame].width + "%", "height": topToBottom[frame].height + "%",
+            //         });
+            //         $("#videopage2").css({
+            //             "left": centerToBottom[frame].left, "top": centerToBottom[frame].top, "transform": centerToBottom[frame].transform,
+            //             "width": centerToBottom[frame].width, "height": centerToBottom[frame].height
+            //         });
+
+            //     }
+            // }, 0025);
+
             // console.log("play");
             // var vid = document.getElementById("v0");
-            vid.playbackRate = 1;
+
             // let heightChanger = $(window).height();
             // console.log(heightChanger);
             // let newHeight = height - heightChanger;
             // console.log(newHeight);
             // let newHeightString = "-" + newHeight + "px";
-            $('#v0').get(0).play();
+
             // $("#videopage1").addClass("downFrombottom");
             // $("#videopage2").addClass("downFromTop");
             // setTimeout(function () {
@@ -588,24 +2903,53 @@
         //         el.classList.add('entered');
         //     }
         // })
+        function createImageObject(animationObject) {
+            for (let index = 1; index < 82; index++) {
+
+                let pgnLocation;
+                if (index < 10) {
+                    pgnLocation = "./porfolioPNG/000" + index + ".png"
+                } else {
+                    pgnLocation = "./porfolioPNG/00" + index + ".png"
+                }
+                animationObject[index].imageLocation = pgnLocation
+            }
+            console.log(animationObject);
+        }
+
+        createImageObject(centerToBottom)
+
         function createNewObject(animationObject) {
+
             let newObject = {}
+            let newlocation1 = 1;
+            let newlocation2 = 2;
+            let newlocation3 = 3;
             for (let index = 1; index < 81; index++) {
                 secondObjectIndex = index + 1;
-                thirdObjectIndex = index + 1;
+                thirdObjectIndex = index + 2;
+
                 object1 = animationObject[index];
                 object2 = animationObject[secondObjectIndex];
                 object3 = {}
                 let keyArray = Object.keys(object1);
                 keyArray.forEach(element => {
-                    object3[element] = compareTwoDetermineMiddle(object1[element], object2[element])
+                    object3[element] = compareTwoDetermineMiddle(parseFloat(object1[element]), parseFloat(object2[element]))
                 });
-                newObject[index] = object1;
-                newObject[secondObjectIndex] = object3;
-                newObject[thirdObjectIndex] = object2;
+                if (index === 1) {
+                    newObject[newlocation1] = object1;
+                }
+                newObject[newlocation3] = object2;
+                newObject[newlocation2] = object3;
+
+                newlocation2 = newlocation2 + 2;
+                newlocation3 = newlocation3 + 2;
+
             }
             console.log(newObject);
         }
+
+        createNewObject(centerToBottom)
 
         function compareTwoDetermineMiddle(firstNumber, secondNumber) {
             let newAnswer;
@@ -615,16 +2959,16 @@
             else {
                 newAnswer = (firstNumber + secondNumber) / 2
             }
-            return newAnswer
+            return newAnswer.toFixed(2);
 
         }
-        let frameNumber = 0, // start video at frame 0
-            // lower numbers = faster playback
-            playbackConst = 1,
+        // let frameNumber = 0, // start video at frame 0
+        // lower numbers = faster playback
+        playbackConst = 1;
             // get page height from video duration
 
             // select video element         
-            vid = document.getElementById('v0');
+            // vid = document.getElementById('v0');
         // var vid = $('#v0')[0]; // jquery option
         // dynamically set the page height according to video length
         // vid.addEventListener('loadedmetadata', function () {
@@ -640,12 +2984,19 @@
         //     // var newPos = $(myHref).offset().top;
         //     $('html, body').stop().animate({ scrollTop: 3000 }, 1300);
         // });
-
-        // // Use requestAnimationFrame for smooth playback
+        // Use requestAnimationFrame for smooth playback
         // function scrollPlay() {
-        //     var frameNumber = frame / 2.4;
+        //     var frameNumber = frame / 24;
         //     vid.currentTime = frameNumber;
         //     window.requestAnimationFrame(scrollPlay);
+        //     $("#videopage1").css({
+        //         "left": topToBottom[frame].left + "%", "top": topToBottom[frame].top + "%", "transform": "rotateY(" + topToBottom[frame].transform + "deg)",
+        //         "width": topToBottom[frame].width + "%", "height": topToBottom[frame].height + "%",
+        //     });
+        //     $("#videopage2").css({
+        //         "left": centerToBottom[frame].left + "%", "top": centerToBottom[frame].top + "%", "transform": "rotateY(" + centerToBottom[frame].transform + "deg)",
+        //         "width": centerToBottom[frame].width + "%", "height": centerToBottom[frame].height + "%",
+        //     });
         // }
 
         // window.requestAnimationFrame(scrollPlay);
