@@ -15,6 +15,7 @@
 <body>
     <div class="playButtondiv"> <button id="playButton">Play</button></div>
     <div class="playButtondiv"><button id="playButton3">Play</button></div>
+    <div class="playButtondiv"><button id="switch">Switch</button></div>
 
 
     <div class="mainBlock">
@@ -34,22 +35,94 @@
 
     <div id="set-height"></div>
 
-    <video id="v0" tabindex="0" , autobuffer preload>
+    <video id="v0" class="backgroundVideo" tabindex="0" , autobuffer preload>
         <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="./background3.webm">
         </source>
     </video>
+
+    <video id="v1" class="backgroundVideo" tabindex="0" , autobuffer preload>
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="./backgroundreverse0001-0505.webm">
+        </source>
+    </video>
     <script>
-        let interval = 4.1;
-        let startTime = 0;
-        let endTime = startTime + interval;
+        // let interval = 4.1;
+        // let startTime = 0;
+        // let endTime = startTime + interval;
+        const playIndex = {
+            down: {
+                firstImage: 0,
+                secondImage: 4.1,
+                thirdImage: 8.2,
+                forthImage: 12.3,
+                fifthImage: 16.4,
+                sixthImage: 20.5,
+            },
+            up: {
+                firstImage: 21,
+                secondImage: 17,
+                thirdImage: 13,
+                forthImage: 9,
+                fifthImage: 4.9,
+                sixthImage: 0,
+            }
+        }
+        const locators = ["firstImage",
+            "secondImage",
+            "thirdImage",
+            "forthImage",
+            "fifthImage",
+            "sixthImage"];
         // let currenttime = $('#v0')[0].currentTime;
-
+        let locatorNumber = 0;
+        let endTime;
+        $('#v0')[0].currentTime = playIndex.down[locators[locatorNumber]];
+        $('#v1')[0].currentTime = playIndex.up[locators[locatorNumber]];
+        let onTop = true;
+        $("#switch").click(() => {
+            if (onTop === true) {
+                // ("#swich").css("background-color", "blue");
+                $("#v1").css("z-index", 5)
+                onTop = false;
+            } else {
+                // ("#swich").css("background-color", "red");
+                $("#v1").css("z-index", 20)
+                onTop = true;
+            }
+        });
         $('#playButton').click(function (e) {
-
-            $('#v0')[0].currentTime = startTime;
+            // locatorNumber++;
+            $('#v0')[0].currentTime = playIndex.down[locators[locatorNumber]];
+            $('#v1')[0].currentTime = playIndex.up[locators[locatorNumber]];
+            $("#v1").css("z-index", 5);
             $('#v0')[0].play();
+            // $('#v0')[0].currentTime = startTime;
+            // $('#v0')[0].play();
+            let endTimeLocator = locatorNumber + 1;
+            console.log(endTimeLocator)
+            console.log(playIndex.down[locators[endTimeLocator]]);
+            endTime = playIndex.down[locators[endTimeLocator]];
             checkTime();
-            startTime = startTime + interval;
+            locatorNumber++;
+            $('#v1')[0].currentTime = playIndex.up[locators[locatorNumber]];
+            // startTime = startTime + interval;
+
+        });
+        $('#playButton3').click(function (e) {
+            // locatorNumber--;
+            $('#v0')[0].currentTime = playIndex.down[locators[locatorNumber]];
+            $('#v1')[0].currentTime = playIndex.up[locators[locatorNumber]];
+            $("#v1").css("z-index", 20);
+            // $('#v1')[0].currentTime = 20;
+            // $("#v0").css("z-index", "5");
+            // $('#v0')[0].currentTime = endTime;
+            $('#v1')[0].play();
+            let endTimeLocator = locatorNumber;
+            console.log(endTimeLocator)
+            console.log(playIndex.up[locators[endTimeLocator]]);
+            endTime = playIndex.up[locators[endTimeLocator]];
+            checkTime();
+            locatorNumber--;
+            $('#v0')[0].currentTime = playIndex.down[locators[locatorNumber]];
 
         });
 
@@ -57,12 +130,14 @@
             if ($('#v0')[0].currentTime >= endTime) {
 
                 $('#v0')[0].pause();
-                endTime = endTime + interval;
+
+
 
             } else {
                 /* call checkTime every 1/10th 
                    second until endTime */
                 setTimeout(checkTime, 100);
+                // console.log($('#v0')[0].currentTime)
 
             }
         }
