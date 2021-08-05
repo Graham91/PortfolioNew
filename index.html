@@ -16,7 +16,11 @@
 <body>
 
 
-
+    <div id="youTubeModule">
+        <div id="closeX">X</div>
+    </div>
+    <div id="playButton1"></div>
+    <div id="playButtonShadow"></div>
     <div class="mainBlock">
     </div>
     <div class="fullScreen">
@@ -129,10 +133,74 @@
                             site in the future.
                         </p>
                     </div>
+                    <div class="links">
+                        <a href="https://not-reddit-seenit.herokuapp.com/" class="Label1" target="_blank">
+                            Site Link
+                        </a>
+                        <a href="https://github.com/jcstang/not-reddit"  class="Label2" target="_blank">
+                            Git Repository
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="readerBox">
-                <div class="innerBox"></div>
+                <div class="innerBox">
+                    <div class="title">Tiny Monsters</div>
+                    <div class=techUsed>
+                        <p>Python</p>
+                        <p>Blender</p>
+                        <p>React-Native</p>
+                        <p>Gimp</p>
+                    </div>
+                    <div class="siteText">
+                        <P>
+                            This site began as joint class project, however it has changed
+                            so
+                            much recently that it is basically almost all my work. The
+                            initial
+                            idea
+                            was to create a sports dashboard where NBA fans could keep up
+                            with
+                            their favorite teams and players. This was our first full stack
+                            project, and because of the nervousness of the others in my
+                            group, I
+                            was tasked with the entire backend as well as most all the
+                            communication back and forth. They just did front end design
+                            stuff,
+                            and one of the API’s that is still being utilized, although it
+                            has
+                            been repurposed. After our presentation I began working on the
+                            site
+                            myself. I have since completely redesigned an extremely
+                            responsive
+                            visually dynamic User interface as well as built my own
+                            information
+                            gathering tools using cheerio and several other API’s. This project
+                            has
+                            by and far taken the most of my time and is the largest. I'd
+                            estimates
+                            my personal time spent in hours here in the 2 to 3 hundred range.
+                        </P>
+                        <p>
+                            Once you have signed into the site If you change the last
+                            integer in
+                            the URL you can see different user profiles. This obviously is
+                            not
+                            ideal, but it was a quick solution implemented when building my
+                            first full stack app, that I kept for its convenience in showing
+                            off
+                            the app’s versatility.
+                        </p>
+                    </div>
+                    <div class="links">
+                        <a href="https://www.instagram.com/grahamthomasart/" class="Label1" target="_blank">
+                            Instgram Profile
+                        </a>
+                        <a href="https://github.com/Graham91/PythonOrgamiScript"  class="Label2" target="_blank">
+                            Git Repository
+                        </a>
+                    </div>
+                </div>
 
             </div>
             <div class="readerBox">
@@ -196,9 +264,69 @@
                             the app’s versatility.
                         </p>
                     </div>
+                    <div class="links">
+                        <a href="https://nbasportscenter.herokuapp.com/" class="Label1" target="_blank">
+                            Site Link
+                        </a>
+                        <a href="https://github.com/Graham91/NBASportsCenter"  class="Label2" target="_blank">
+                            Git Repository
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="readerBox"></div>
+            <div class="readerBox">
+                <div class="innerBox">
+                    <div class="title">Thomas Family Test</div>
+                    <div class=techUsed>
+                        <p>Javascript</p>
+                        <p>CSS</p>
+                        <p>HTML</p>
+                        <p>React</p>
+                        <p>React Hooks</p>
+                        <p>React-Icons</p>
+                        <p>Node js</p>
+                        <p>Express js</p>
+                        <p>MongoDB</p>
+                        <p>Mongoose</p>
+                    </div>
+                    <div class="siteText">
+                        <p>
+                            This was my final project in my coding course. The initial intent was to
+                            build a forum, like reddit, for
+                            posting content that was visually exciting. The user interface we
+                            settled on ended up being a sort of
+                            reddit, Pinterest hybrid.
+                        </p>
+                        <p>
+                            Something important to me is effectively being able to utilize these
+                            massive bright screens that crowd
+                            our desks these days. They are built for entertainment. Let’s face it,
+                            Reddit is ugly. So are most
+                            websites these days. Our screens are bigger, but to avoid things looking
+                            like children’s book everything
+                            stays small, and we just cram in more. They become nightmares to use
+                            because you are overwhelmed by
+                            options. Focus is lost. These ideas gave rise to this design. It became
+                            a browsing/informative hybrid
+                            that I quite like. We force the user to think about the image they will
+                            use to get people’s attention,
+                            and this in turn create a much more instinctive interface. Curiosity is
+                            by its very nature hesitant, a
+                            website that relies on curiosity fails to truly captivate instinct. The
+                            UI/Design work here was my baby
+                            in both its conception and coding. I hope you enjoy it and find it
+                            entertaining to use. Also look at the
+                            very informative readme on git hub to see where we intend to take the
+                            site in the future.
+                        </p>
+                    </div>
+                    <div class="links">
+                        <a href="https://github.com/Graham91/ThomasFamilyTest"  class="Label2" target="_blank">
+                            Git Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="readerBox"></div>
         </div>
         <div class="infoBox2">
@@ -231,6 +359,37 @@
         </source>
     </video>
     <script>
+        $("#playButtonShadow").click(()=>{
+            // $("#playButton1").css("top", "45%");
+            // $("#playButton1").css("right", "23%");
+            $("#playButton1").animate({
+                    // opacity: 0.25,
+                       right: "23.5%",
+                       top: "46%",
+                       borderWidth: "45px 0 45px 67.5px",
+
+                    }, 300, function() {
+    // Animation complete.
+                  });
+                  $("#playButtonShadow").animate({
+                    // opacity: 0.25,
+                    right: "23.5%",
+                    top: "46%",
+                       borderWidth: "45px 0 45px 67.5px",
+
+                    }, 300, function() {
+    // Animation complete.
+                  });
+                  $("#youTubeModule").animate({
+                    // opacity: 0.25,
+        
+                    top: 0,
+
+
+                    }, 800, function() {
+    // Animation complete.
+                  });
+        });
 
         const playIndex = {
             up: {
