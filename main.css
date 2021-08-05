@@ -251,10 +251,11 @@ box-shadow: 3px 6px 19px 5px rgba(0,0,0,0.7);
   position: absolute;
   top: 20px;
   right:20px;
-  font-size: x-large;
+  font-size: 3em;
   color: whitesmoke;
-  font-weight: 300;
+  font-weight: 600;
   font-family: Arial, sans-serif;
+  cursor: pointer; 
 }
 #youTubeModule{
   position: fixed;

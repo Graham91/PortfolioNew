@@ -18,6 +18,8 @@
 
     <div id="youTubeModule">
         <div id="closeX">X</div>
+        <iframe src="http://www.youtube.com/embed/W7qWa52k-nE"
+        width="560" height="315" frameborder="0" allowfullscreen></iframe>
     </div>
     <div id="playButton1"></div>
     <div id="playButtonShadow"></div>
@@ -359,6 +361,38 @@
         </source>
     </video>
     <script>
+        $("#closeX").click(()=>{
+       
+                  $("#youTubeModule").animate({
+                    // opacity: 0.25,
+        
+                    top: "-100vh",
+
+
+                    }, 800, function() {
+                        $("#playButton1").animate({
+                    // opacity: 0.25,
+                       right: "22.5%",
+                       top: "47%",
+
+                       borderWidth: "50px 0 50px 75px",
+
+                    }, 300, function() {
+    // Animation complete.
+                  });
+                  $("#playButtonShadow").animate({
+                    // opacity: 0.25,
+                    right: "23%%",
+                    top: "45%",
+                    borderWidth: "50px 0 50px 75px",
+
+                    }, 300, function() {
+    // Animation complete.
+                  });
+    // Animation complete.
+                  });
+
+        })
         $("#playButtonShadow").click(()=>{
             // $("#playButton1").css("top", "45%");
             // $("#playButton1").css("right", "23%");
