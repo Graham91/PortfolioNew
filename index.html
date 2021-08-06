@@ -15,7 +15,9 @@
 
 <body>
 
-
+    <div class="newheaderIdea">
+        <!-- <img src="./weirdidea.png" id="weirdImage"/> -->
+    </div>
     <div id="youTubeModule">
         <div id="closeX">X</div>
         <iframe src="https://www.youtube.com/embed/W7qWa52k-nE"
@@ -67,6 +69,7 @@
         </div>
         <div class="infoBox">
             <div class="readerBox">
+                <!-- <img src="./weirdidea.png" id="weirdImage2"/> -->
                 <div class="innerBox">
                     <div class="title">Rock Paper Scissors Lizard Spock</div>
                     <div class=techUsed>
@@ -107,6 +110,7 @@
                 </div>
             </div>
             <div class="readerBox">
+
                 <div class="innerBox">
                     <div class="title">Seen-It</div>
                     <div class=techUsed>
@@ -632,10 +636,11 @@
 
             }
         }
-
+        
         // new ResizeSensor(jQuery('.infoBox'), function () {
         //     console.log('main content dimension changed');
         // });
+        const imagemargins = ["-1400px", "-1200px", "-900px", "-600px", "-300px", "-50px"];
         function down(newLocation) {
             let div = arrayOfColorimageDivs[currentLocation];
             let image = arrayOfColorimages[currentLocation];
@@ -653,6 +658,7 @@
             //endtime is updated 
             endTime = playIndex.down[locators[newLocation]];
             console.log("endTime: " + endTime);
+            // $("#weirdImage").css("margin", imagemargins[newLocation] + " 0px 0px 0px");
             //required video is played
             $('#v1')[0].play();
             //lower video is given new location
@@ -661,6 +667,8 @@
             //currentLocation is updated
             checkTime2();
         }
+        
+
         function up(newLocation) {
             let div = arrayOfColorimageDivs[currentLocation];
             let image = arrayOfColorimages[currentLocation];
@@ -677,6 +685,7 @@
             //endtime is updated 
             endTime = playIndex.up[locators[newLocation]];
             console.log("endTime: " + endTime);
+            // $("#weirdImage").css("margin", imagemargins[newLocation] + " 0px 0px 0px");
             //required video is played
             $('#v0')[0].play();
             //lower video is given new location
