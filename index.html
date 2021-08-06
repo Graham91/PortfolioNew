@@ -24,7 +24,34 @@
     <div id="playButton1"></div>
     <div id="playButtonShadow"></div>
     <div class="mainBlock">
+        <div id="videopage1">
+            <div id="imageDiv1"></div>
+            <div class="staticDiv"></div>
+        </div>
+      
+        <div id="videopage2">
+            <div id="imageDiv2"></div>
+            <div class="staticDiv"></div>
+        </div>
+        <div id="videopage3">
+            <div id="imageDiv3"></div>
+            <div class="staticDiv"></div>
+        </div>
+        <div id="videopage4">
+            <div id="imageDiv4"></div>
+            <div class="staticDiv"></div>
+        </div>
+        <div id="videopage5">
+            <div id="imageDiv5"></div>
+            <div class="staticDiv"></div>
+        </div>
+        <div id="videopage6">
+            <div id="imageDiv6"></div>
+            <div class="staticDiv"></div>
+        </div>
     </div>
+    <div class="gradientMain"></div>
+    
     <div class="fullScreen">
         <div class="sandwichbox">
             <div class="meat"></div>
@@ -424,6 +451,30 @@
     // Animation complete.
                   });
         });
+        //animation for black/white to color
+        const arrayOfColorimages = ["#imageDiv1", "#imageDiv2", "#imageDiv3", "#imageDiv4", "#imageDiv5", "#imageDiv6"]
+        const arrayOfColorimageDivs = ["#videopage1", "#videopage2", "#videopage3", "#videopage4", "#videopage5", "#videopage6"]
+        function showColorImage (item) {
+            let div = arrayOfColorimageDivs[item];
+            console.log(div);
+            let image = arrayOfColorimages[item];
+            console.log(image);
+            $(div).css("display", "block");
+            $(".staticDiv").animate({
+                    opacity: 0,
+                    }, 2000, function() {
+    // Animation complete.
+                  });
+            $(image).animate({
+                    opacity: 1,
+                    }, 3000, function() {
+                        $("#playButton1").css("display", "block");
+                        $("#playButtonShadow").css("display", "block");
+    // Animation complete.
+                  });
+
+
+        }
 
         const playIndex = {
             up: {
@@ -500,7 +551,8 @@
             latestScrollTop = 0,
             doc = $(".infoBox2"),
             top = 0;
-        let locationVar = 0
+        let locationVar = 0;
+        
         // Bind window scroll event
         doc.scroll(function () {
             let value = doc.scrollTop();
@@ -585,6 +637,14 @@
         //     console.log('main content dimension changed');
         // });
         function down(newLocation) {
+            let div = arrayOfColorimageDivs[currentLocation];
+            let image = arrayOfColorimages[currentLocation];
+            $("#playButton1").css("display", "none");
+            $("#playButtonShadow").css("display", "none");
+            $(div).css("display", "none");
+            $(image).css({ opacity: 0 });
+            $(".staticDiv").css({ opacity: 0.5 });
+            console.log(image);
             scroll("2000px", 3500, false);
             console.log("down function activated");
             console.log("newLocation: " + newLocation)
@@ -602,7 +662,13 @@
             checkTime2();
         }
         function up(newLocation) {
-
+            let div = arrayOfColorimageDivs[currentLocation];
+            let image = arrayOfColorimages[currentLocation];
+            $("#playButton1").css("display", "none");
+            $("#playButtonShadow").css("display", "none");
+            $(div).css("display", "none");
+            $(image).css({ opacity: 0 });
+            $(".staticDiv").css({ opacity: 0.5 });
             scroll("2000px", 3500, true);
             console.log("up function activated");
             console.log("newLocation: " + newLocation)
@@ -624,9 +690,10 @@
             if ($('#v1')[0].currentTime >= endTime) {
                 //Video is Paused
                 $('#v1')[0].pause();
+                showColorImage(locationVar); 
                 //After video is played:
                 //currentLocation is updated
-                currentLocation = newLocation;
+                currentLocation = locationVar;
             } else {
                 /* call checkTime every 1/10th 
                    second until endTime */
@@ -637,9 +704,10 @@
             if ($('#v0')[0].currentTime >= endTime) {
                 //Video is Paused
                 $('#v0')[0].pause();
+                showColorImage(locationVar); 
                 //After video is played:
                 //currentLocation is updated
-                currentLocation = newLocation;
+                currentLocation = locationVar;
             } else {
                 /* call checkTime every 1/10th 
                    second until endTime */
